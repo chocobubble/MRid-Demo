@@ -41,6 +41,7 @@ namespace MRidDemo
     [CreateAssetMenu(fileName = "Assets/Resources/GameData/EquipmentData/Equipment", menuName = "MRidDemo/Equipment", order = 2)]
     public class EquipmentSO : ScriptableObject
     {
+        public bool isEquiped = false;
         public string equipmentName;
         public EquipmentType equipmentType;
         public Rarity rarity;

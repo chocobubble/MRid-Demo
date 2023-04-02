@@ -266,13 +266,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b943874dbf0540a79d562d90f02d7ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultItems:
+  - {fileID: 11400000, guid: b44317621e54042fb9ba9189868d56cd, type: 2}
+  - {fileID: 11400000, guid: 4a1a08c19896246799cc23d379d265cc, type: 2}
+  - {fileID: 11400000, guid: 1cac5e149b82b40d4935f9e9b8a8c4a9, type: 2}
+  - {fileID: 11400000, guid: 7579b5649813449a0bdcf8d0c044b9a7, type: 2}
+  - {fileID: 11400000, guid: c3a31327da3e14b76bec5a16ab53d1b7, type: 2}
+  - {fileID: 11400000, guid: ef5aa167b89e4436c9a1500dfcd07248, type: 2}
   Onskill: 0
   isDungeonEnded: 0
+  isFailed: 1
   allyList: []
   GMcharacterList: []
   fightingMembers: []
   GMEquipmentList: []
-  GMEquipedEquipmentList: []
   money: 0
   date: 150
 --- !u!4 &456085732
@@ -481,6 +488,7 @@ MonoBehaviour:
   m_UIManager: {fileID: 610311805}
   m_Document: {fileID: 610311802}
   gameManager: {fileID: 0}
+  curChracterData: {fileID: 0}
   defaultSprite: {fileID: 21300000, guid: 10439d17683ea44018d963ec8957a008, type: 3}
 --- !u!4 &1333713616
 Transform:

@@ -48,3 +48,27 @@
     padding-top: 1%;
     padding-bottom: 1%;
 }
+
+.bag__item__slot--equiped {
+    opacity: 0.5;
+}
+
+.stats__box {
+    height: 20%;
+    width: 50%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 1%;
+    padding-right: 2%;
+}
+
+.character__slot--picked {
+    border-left-color: rgba(255, 253, 129, 255);
+    border-right-color: rgba(255, 253, 129, 255);
+    border-top-color: rgba(255, 253, 129, 255);
+    border-bottom-color: rgba(255, 253, 129, 255);
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+}

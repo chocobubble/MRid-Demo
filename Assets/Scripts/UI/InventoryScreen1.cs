@@ -7,7 +7,9 @@ using UnityEngine.UIElements;
 namespace MRidDemo
 {
 public class InventoryScreen1 : MenuScreen
-{
+{}
+}
+    /*
     List<InventorySlot> InventoryItems = new List<InventorySlot>();
     List<CharacterSO> characterList;
     List<EquipmentSO> equipmentList;
@@ -102,6 +104,7 @@ public class InventoryScreen1 : MenuScreen
             m_SlotContainer.Add(item);
         }
         */
+        /*
     }
 
     void inform(ClickEvent evt)
@@ -207,7 +210,7 @@ public class InventoryScreen1 : MenuScreen
     }
 */
 
-
+/*
 
     public void CreateContainer()
     {
@@ -268,5 +271,5 @@ public class InventoryScreen1 : MenuScreen
             //statsLabel.text = $"Respond Speed : {characterSO.responseSpeed}";
         }
     }
-}
-}
+    */
+

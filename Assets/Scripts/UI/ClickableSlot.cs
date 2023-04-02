@@ -58,7 +58,18 @@ public class ClickableSlot : Button
         this.text = "";
         this.AddToClassList("bag__item__slot");
         this.style.backgroundColor = new StyleColor(new Color(0,0,0,0));
-        this.style.backgroundImage = new StyleBackground(equipmentSO.sprite);
+        if(equipmentSO.sprite == null)
+        {
+            this.style.backgroundColor = new StyleColor(new Color(255, 255, 255, 255));
+        }
+        else 
+        {
+            this.style.backgroundImage = new StyleBackground(equipmentSO.sprite);
+        }
+        if(equipmentSO.isEquiped == true)
+        {
+            this.AddToClassList("bag__item__slot--equiped");
+        }
     }
 
     void click()

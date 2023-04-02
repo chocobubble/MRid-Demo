@@ -12,6 +12,9 @@ namespace MRidDemo
 {
     public class GameManager : MonoBehaviour
     {
+        /// For Testing
+        public List<EquipmentSO> defaultItems = new List<EquipmentSO>();
+        /// For Testing end
         public bool Onskill = false;
         public bool isDungeonEnded = false;
         public bool isFailed = true;
@@ -33,7 +36,7 @@ namespace MRidDemo
         // Equipment that purchased or earned in the fight. except equiped.
         public List<EquipmentSO> GMEquipmentList = new List<EquipmentSO>();
         // equiped equipment
-        public List<EquipmentSO> GMEquipedEquipmentList = new List<EquipmentSO>();
+        //public List<EquipmentSO> GMEquipedEquipmentList = new List<EquipmentSO>();
 
         public int money;
         public int date = 150;
@@ -73,6 +76,8 @@ namespace MRidDemo
                 //Debug.Log(path);
                 GMcharacterList.Add((CharacterSO)AssetDatabase.LoadAssetAtPath(path, typeof(CharacterSO)));
             }
+
+
             /*
             foreach (string path in equipmentPaths)
             {
@@ -80,8 +85,42 @@ namespace MRidDemo
             }
             */
 
-        }
+            Testing();
 
+        }
+        void Testing()
+        {
+            foreach (CharacterSO c in GMcharacterList)
+            {
+                Equip(c);
+            }
+        }
+        void Equip(CharacterSO c)
+        {
+
+            EquipmentSO weapon = ScriptableObject.CreateInstance<EquipmentSO>();
+            int rnd = Random.Range(0,3);
+            //EquipData e = new EquipData(defaultItems[rnd]);
+            SetEquipmentData(weapon, defaultItems[rnd]);
+            weapon.isEquiped = true;
+            c.defaultWeapon = weapon;
+            GMEquipmentList.Add(c.defaultWeapon);
+            rnd = Random.Range(3, 6);
+            EquipmentSO armor = ScriptableObject.CreateInstance<EquipmentSO>();
+            SetEquipmentData(armor, defaultItems[rnd]);
+            armor.isEquiped = true;
+            c.defaultHelmet = armor;
+            GMEquipmentList.Add(c.defaultHelmet);
+
+        }
+        void SetEquipmentData(EquipmentSO _equip, EquipmentSO _default)
+    {
+        _equip.equipmentName = _default.equipmentName;
+        _equip.equipmentType = _default.equipmentType;
+        _equip.rarity = _default.rarity;
+        _equip.points = _default.points;
+        _equip.sprite = _default.sprite;
+    }
         //public GameObject MaxHpMaxCurrHp(){}
         /*
         public void SettingUnits()
