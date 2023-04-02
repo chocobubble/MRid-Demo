@@ -31,5 +31,5 @@ MonoBehaviour:
   xp: 0
   characterLevel: 0
   skill1: {fileID: 0}
-  defaultWeapon: {fileID: 0}
-  defaultHelmet: {fileID: 0}
+  defaultWeapon: {fileID: 11400000, guid: 4a1a08c19896246799cc23d379d265cc, type: 2}
+  defaultHelmet: {fileID: 11400000, guid: 7579b5649813449a0bdcf8d0c044b9a7, type: 2}

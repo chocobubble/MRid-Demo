@@ -22,10 +22,14 @@ public class InventoryScreen : MenuScreen
 
     VisualElement characterSprite;
     VisualElement rosterContainer;
+    VisualElement equipmentContainer;
+    VisualElement weaponSprite;
+    VisualElement armorSprite;
 
     public List<Button> equipmentButtons = new List<Button>();
-    Button equipButton;
-    Button infoButton;
+
+    Button weaponButton;
+    Button armorButton;
 
     Label infoLeftLabel;
     Label infoMiddleLabel;
@@ -78,12 +82,18 @@ public class InventoryScreen : MenuScreen
         ///
 
         characterSprite = m_Screen.Q<VisualElement>("Sprite");
+        weaponSprite = m_Screen.Q<VisualElement>("WeaponSprite");
+        armorSprite = m_Screen.Q<VisualElement>("ArmorSprite");
 
         characterLevel = m_Screen.Q<Label>("LevelLabel");
         characterName = m_Screen.Q<Label>("CharacterName");
         characterXp = m_Screen.Q<Label>("XPLabel");
 
         rosterContainer = m_Screen.Q<VisualElement>("RosterContainer");
+        equipmentContainer = m_Screen.Q<VisualElement>("EquipmentContainer");
+
+        weaponButton = m_Screen.Q<Button>("WeaponButton");
+        armorButton = m_Screen.Q<Button>("ArmorButton");
 
         //curChracterData = characterList[0];
         //SetInventoryScreen();
@@ -106,6 +116,9 @@ public class InventoryScreen : MenuScreen
         equipmentList = gameManager.GMEquipmentList;
         characterList = gameManager.GMcharacterList;
 
+        rosterContainer.Clear();
+        equipmentContainer.Clear();
+
         curChracterData = characterList[0];
 
         characterSprite.style.backgroundImage = new StyleBackground(curChracterData.visual);
@@ -115,6 +128,7 @@ public class InventoryScreen : MenuScreen
         characterXp.text = curChracterData.xp.ToString();
 
         SetRoster();
+        SetBag();
 
     }
 
@@ -125,8 +139,88 @@ public class InventoryScreen : MenuScreen
             //ClickableSlot clickableSlot = new ClickableSlot(characterSlotID, characterSlotSpriteID, "Roster"+i);
             ClickableSlot clickableSlot = new ClickableSlot(gameManager.GMcharacterList[i], "Roster" + i);
             rosterContainer.Add(clickableSlot);
+            clickableSlot.RegisterCallback<ClickEvent, int>(ResetEquiped, i);
         }
     }
+
+    void ResetEquiped(ClickEvent cvt, int i)
+    {
+        //Button targetButton = cvt.target as Button;
+        //int n = targetButton.name[^1];
+        if(gameManager.GMcharacterList[i].defaultWeapon != null) weaponSprite.style.backgroundImage = new StyleBackground(gameManager.GMcharacterList[i].defaultWeapon.sprite);
+        else weaponSprite.style.backgroundImage = null;
+        if(gameManager.GMcharacterList[i].defaultHelmet != null) armorSprite.style.backgroundImage = new StyleBackground(gameManager.GMcharacterList[i].defaultHelmet.sprite);
+        else armorSprite.style.backgroundImage = null;
+
+        ResetCharacterInfo(i);
+
+    }
+
+    void ResetCharacterInfo(int i)
+    {
+        curChracterData = characterList[i];
+        characterSprite.style.backgroundImage = new StyleBackground(curChracterData.visual);
+        characterName.text = curChracterData.characterName;
+        characterLevel.text = curChracterData.characterLevel.ToString();
+        // later modify..
+        characterXp.text = curChracterData.xp.ToString();
+    }
+
+
+    void SetBag()
+    {
+        for(int i=0; i<gameManager.GMEquipmentList.Count; i++)
+        {
+            ClickableSlot clickableSlot = new ClickableSlot(gameManager.GMEquipmentList[i], i.ToString());
+            equipmentContainer.Add(clickableSlot);
+            clickableSlot.RegisterCallback<ClickEvent>(ResetEquip);
+        }
+    }
+
+    void ResetEquip(ClickEvent cvt)
+    {
+        Button targetButton = cvt.target as Button;
+        int i = System.Convert.ToInt32(targetButton.name);
+        if(gameManager.GMEquipmentList[i].equipmentType == EquipmentType.Weapon)
+        {
+            if(curChracterData.defaultWeapon != null)
+            {
+                EquipmentSO temp = curChracterData.defaultWeapon;
+                curChracterData.defaultWeapon = gameManager.GMEquipmentList[i];
+                gameManager.GMEquipmentList[i] = temp;
+            }
+            else
+            {
+                curChracterData.defaultWeapon = gameManager.GMEquipmentList[i];
+                gameManager.GMEquipmentList[i] = null;
+            }
+
+            weaponSprite.style.backgroundImage = new StyleBackground(gameManager.GMEquipmentList[i].sprite);
+        }
+        else // EquipmentType.Helmet
+        {
+            if(curChracterData.defaultHelmet != null)
+            {
+                EquipmentSO temp = curChracterData.defaultHelmet;
+                curChracterData.defaultHelmet = gameManager.GMEquipmentList[i];
+                gameManager.GMEquipmentList[i] = temp;
+            }
+            else
+            {
+                curChracterData.defaultHelmet = gameManager.GMEquipmentList[i];
+                gameManager.GMEquipmentList[i] = null;
+            }        
+
+            armorSprite.style.backgroundImage = new StyleBackground(gameManager.GMEquipmentList[i].sprite);   
+        }
+        targetButton.style.backgroundImage = new StyleBackground(gameManager.GMEquipmentList[i].sprite);
+
+        //gameManager.GMEquipedEquipmentList.Add(gameManager.GMEquipmentList[i]);
+        //gameManager.GMEquipmentList[i] = null;
+        //targetButton.style.display = DisplayStyle.None;
+        
+    }
+
 
 
 

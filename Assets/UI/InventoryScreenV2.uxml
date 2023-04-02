@@ -3,10 +3,10 @@
     <ui:VisualElement name="Container" style="flex-grow: 1; flex-direction: row; background-image: url(&apos;project://database/Assets/BayatGames/Free%20Platform%20Game%20Assets/Tiles/2.5D%20Tiles/Spring/png/128x128/column_up.png?fileID=2800000&amp;guid=a5e452d9c123fca4ba97036b370efebe&amp;type=3#column_up&apos;); overflow: visible; visibility: visible;">
         <ui:VisualElement name="LeftContainer" style="width: 40%; flex-grow: 1; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
             <ui:VisualElement name="CharacterInfoContainer" style="height: 20%; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-direction: row;">
-                <ui:VisualElement name="ChracterSprite" style="flex-grow: 1; margin-left: 2%; margin-right: 2%; margin-top: 2%; margin-bottom: 2%; width: auto;">
+                <ui:VisualElement name="ChracterSprite" style="flex-grow: 1; margin-left: 2%; margin-right: 2%; margin-top: 2%; margin-bottom: 2%; width: 40%;">
                     <ui:VisualElement name="Sprite" style="background-image: url(&apos;project://database/Assets/BayatGames/Free%20Platform%20Game%20Assets/Environments/New%20Details%20(%20Update%201.9%20)/8x/Flower-1.png?fileID=2800000&amp;guid=75bbd849a8be84a4dbc03e1a589904bf&amp;type=3#Flower-1&apos;); width: 100%; height: 100%; flex-grow: 1;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="LevelContainer" style="flex-grow: 1;">
+                <ui:VisualElement name="LevelContainer" style="flex-grow: 1; width: 60%;">
                     <ui:VisualElement name="NameContainer" style="border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                         <ui:Label text="Label" display-tooltip-when-elided="true" name="CharacterName" style="-unity-text-align: middle-center;" />
                     </ui:VisualElement>
@@ -23,12 +23,12 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="EquipedContainer" style="height: 40%; flex-direction: row; align-items: center; justify-content: space-around; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;">
-                <ui:VisualElement name="WeaponContainer" class="equiped__style" style="width: 30%; height: 70%;">
-                    <ui:VisualElement name="WeaponSprite" style="background-image: url(&apos;project://database/Assets/Basic_RPG_Icons/Items/Weapons/No_bg/01_Bow_nobg.png?fileID=2800000&amp;guid=f049b8f6e6c70664abce7e9de8fc5a5c&amp;type=3#01_Bow_nobg&apos;); flex-grow: 1;" />
-                </ui:VisualElement>
-                <ui:VisualElement name="ArmorContainer" class="equiped__style">
-                    <ui:VisualElement name="ArmorSprite" style="background-image: url(&apos;project://database/Assets/Basic_RPG_Icons/Items/Armor/Common/Nobg/01_cloth_chest_nobg.png?fileID=2800000&amp;guid=b817779f7fb33f94a85fd94a5df90287&amp;type=3#01_cloth_chest_nobg&apos;); flex-grow: 1;" />
-                </ui:VisualElement>
+                <ui:Button display-tooltip-when-elided="true" name="WeaponButton" class="equiped__style">
+                    <ui:VisualElement name="WeaponSprite" style="background-image: none; flex-grow: 1;" />
+                </ui:Button>
+                <ui:Button display-tooltip-when-elided="true" name="ArmorButton" class="equiped__style">
+                    <ui:VisualElement name="ArmorSprite" style="background-image: none; flex-grow: 1;" />
+                </ui:Button>
             </ui:VisualElement>
             <ui:VisualElement name="CharacterStatsContainer" style="flex-grow: 1; height: 40%; flex-direction: row; flex-wrap: wrap;">
                 <ui:VisualElement name="HPStats" style="height: 20%; width: 50%; flex-direction: row; justify-content: space-between;">
