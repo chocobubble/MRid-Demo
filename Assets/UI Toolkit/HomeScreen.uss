@@ -1,0 +1,32 @@
+:root {
+    --color-1: rgba(0, 0, 0, 0.75);
+    --color-2: rgb(108, 160, 195);
+    --font-size-h1: 25px;
+    --font-size-h2: 20px;
+    --font-size-h3: 25px;
+    --background-img: url('project://database/Assets/Brackeys/2D Mega Pack/Environment/Stick Figure-like/Ground&Sky.png');
+    -unity-font-definition: url('project://database/Assets/Fonts/Syncopate-Regular%20SDF.asset?fileID=11400000&guid=9f44bdb4a631641b286fadc8de3a0e5a&type=2#Syncopate-Regular SDF');
+    color: var(--color-2);
+}
+
+#Container {
+    flex-grow : 1;
+    background-image: var(--background-img);
+}
+
+
+
+#StartButton:hover {
+    color: white;
+    font-size: var(--font-size-h1);
+}
+
+#SettingsButton:hover {
+    color: white;
+    font-size: var(--font-size-h1);
+}
+
+#ExitButton:hover {
+    color: white;
+    font-size: var(--font-size-h1);
+}

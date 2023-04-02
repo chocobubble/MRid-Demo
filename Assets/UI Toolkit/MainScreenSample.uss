@@ -1,0 +1,118 @@
+:root {
+    --color-1: rgba(0, 0, 0, 0.75);
+    --color-2: rgb(108, 160, 195);
+    --font-size-h1: 25px;
+    --font-size-h2: 20px;
+    --font-size-h3: 25px;
+    --background-img: url('project://database/Assets/OutdoorsGround.png?fileID=2142285350&guid=0fdeaa86fa1224254a8c55a6085ad8d3&type=3#OutdoorsGround_0');
+    -unity-font-definition: url('project://database/Assets/Fonts/Syncopate-Regular%20SDF.asset?fileID=11400000&guid=9f44bdb4a631641b286fadc8de3a0e5a&type=2#Syncopate-Regular SDF');
+    color: var(--color-2);
+}
+
+#Container {
+    flex-grow : 1;
+    background-image: var(--background-img);
+    flex-direction: row;
+}
+
+#Menu {
+    width: 28%;
+    flex-direction: row;
+    transition-property: opacity;
+    transition-duration: 0.75s;
+    transition-timing-function: ease-out-back;
+}
+
+#Menu > VisualElement {
+    background-color: var(--color-1);
+}
+
+#Navigation {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: var(--font-size-h2);
+    -unity-text-align: upper-center;
+}
+
+#DecorativeBar {
+    width: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#Options {
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out-back;
+}
+
+#Options:hover {
+    color: white;
+    font-size: var(--font-size-h1);
+}
+
+#Content {
+    align-items: stretch;
+    flex-grow: 1;
+    margin: 10px;
+}
+
+#Content #Header {
+    width: 100%;
+    font-size: var(--font-size-h2);
+    -unity-font-style: bold;
+    color: rgba(255, 255, 255, 255);
+    -unity-text-align: upper-right;
+}
+
+#Body {
+    flex-grow: 1;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-end;
+}
+
+#WidgetContainer {
+    width: 300px;
+    height: 200px;
+    border-color: rgba(0,0,0,255);
+    margin: 20px;
+    translate: 0 254px;
+    transition-duration: 0.75s;
+    transition-delay: 0.75s;
+    transition-timing-function: ease-out-back;
+}
+
+#Image {
+    border-width: 2px;
+    height: 90%;
+    border-color: var(--color-1);
+    background-color: rgba(666, 66, 66 255);
+}
+
+#NavContainer {
+    height: 10%;
+    flex-direction: row;
+    margin: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+#Selector {
+    border-width: 2px;
+    border-color: var(--color-1);
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    margin: 5px;
+}
+
+.selector-filled {
+    background-color: var(--color-1);
+}
+
+.pop-animation-hide {
+    opacity: 0;
+}

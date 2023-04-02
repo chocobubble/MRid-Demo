@@ -1,0 +1,56 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/CSS/InventoryUSS.uss?fileID=7433441132597879392&amp;guid=b47dc83e396624c35a3a780f8be52137&amp;type=3#InventoryUSS" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; flex-direction: row; background-image: url(&apos;project://database/Assets/BayatGames/Free%20Platform%20Game%20Assets/Tiles/2.5D%20Tiles/Spring/png/128x128/column_up.png?fileID=2800000&amp;guid=a5e452d9c123fca4ba97036b370efebe&amp;type=3#column_up&apos;); overflow: visible; visibility: visible;">
+        <ui:VisualElement name="LeftContainer" style="width: 40%; flex-grow: 1; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+            <ui:VisualElement name="CharacterInfoContainer" style="height: 20%; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-direction: row;">
+                <ui:VisualElement name="ChracterSprite" style="flex-grow: 1; margin-left: 2%; margin-right: 2%; margin-top: 2%; margin-bottom: 2%; width: auto;">
+                    <ui:VisualElement name="Sprite" style="background-image: url(&apos;project://database/Assets/BayatGames/Free%20Platform%20Game%20Assets/Environments/New%20Details%20(%20Update%201.9%20)/8x/Flower-1.png?fileID=2800000&amp;guid=75bbd849a8be84a4dbc03e1a589904bf&amp;type=3#Flower-1&apos;); width: 100%; height: 100%; flex-grow: 1;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="LevelContainer" style="flex-grow: 1;">
+                    <ui:VisualElement name="NameContainer" style="border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                        <ui:Label text="Label" display-tooltip-when-elided="true" name="CharacterName" style="-unity-text-align: middle-center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="XPContainer" style="flex-direction: row; flex-grow: 1; border-left-width: 1px; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                        <ui:VisualElement name="LevelBox" style="width: 20%; justify-content: center; align-items: center;">
+                            <ui:Label text="1" display-tooltip-when-elided="true" name="LevelLabel" style="-unity-text-align: middle-center; -unity-font-style: bold; font-size: 20%; white-space: nowrap;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="XPBar" style="flex-grow: 1; flex-direction: row; justify-content: flex-start; align-items: stretch;">
+                            <ui:Label text="0 / 100" display-tooltip-when-elided="true" name="XPLabel" style="flex-grow: 1; flex-shrink: 0; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(56, 56, 56); border-right-color: rgb(56, 56, 56); border-top-color: rgb(56, 56, 56); border-bottom-color: rgb(56, 56, 56); -unity-text-align: middle-center; margin-left: 2%; margin-right: 2%; margin-top: 2%; margin-bottom: 2%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;">
+                                <ui:VisualElement name="XPGauge" style="flex-grow: 1; width: 50%; background-color: rgb(56, 152, 166); -unity-background-scale-mode: stretch-to-fill; overflow: visible; visibility: visible; opacity: 0.64;" />
+                            </ui:Label>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="EquipedContainer" style="height: 40%; flex-direction: row; align-items: center; justify-content: space-around; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;">
+                <ui:VisualElement name="WeaponContainer" class="equiped__style" style="width: 30%; height: 70%;">
+                    <ui:VisualElement name="WeaponSprite" style="background-image: url(&apos;project://database/Assets/Basic_RPG_Icons/Items/Weapons/No_bg/01_Bow_nobg.png?fileID=2800000&amp;guid=f049b8f6e6c70664abce7e9de8fc5a5c&amp;type=3#01_Bow_nobg&apos;); flex-grow: 1;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="ArmorContainer" class="equiped__style">
+                    <ui:VisualElement name="ArmorSprite" style="background-image: url(&apos;project://database/Assets/Basic_RPG_Icons/Items/Armor/Common/Nobg/01_cloth_chest_nobg.png?fileID=2800000&amp;guid=b817779f7fb33f94a85fd94a5df90287&amp;type=3#01_cloth_chest_nobg&apos;); flex-grow: 1;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="CharacterStatsContainer" style="flex-grow: 1; height: 40%; flex-direction: row; flex-wrap: wrap;">
+                <ui:VisualElement name="HPStats" style="height: 20%; width: 50%; flex-direction: row; justify-content: space-between;">
+                    <ui:VisualElement name="HpImage" style="width: 25%; background-image: url(&apos;project://database/Assets/Brackeys/2D%20Mega%20Pack/Items%20&amp;%20Icons/Pixel%20Art/Heart.png?fileID=2800000&amp;guid=222d62d87db5931498bb85845842b0d3&amp;type=3#Heart&apos;);" />
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:VisualElement name="HpGague" style="flex-grow: 1; background-color: rgb(253, 32, 72); border-top-left-radius: 25px; border-bottom-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; position: absolute; width: 100%; height: 100%; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0; align-items: center;" />
+                        <ui:Label text="( 100 / 100 )" display-tooltip-when-elided="true" name="HpLabel" style="flex-grow: 1; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; border-left-color: rgb(254, 43, 82); border-right-color: rgb(254, 43, 82); border-top-color: rgb(254, 43, 82); border-bottom-color: rgb(254, 43, 82); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-top-left-radius: 25px; border-bottom-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; -unity-text-align: middle-center;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="RightContainer" style="flex-grow: 1; width: 60%;">
+            <ui:VisualElement name="EquipmentContainer" style="height: 60%; flex-grow: 1; border-left-color: rgb(57, 121, 187); border-right-color: rgb(57, 121, 187); border-top-color: rgb(57, 121, 187); border-bottom-color: rgb(57, 121, 187); border-bottom-width: 1px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 1%; padding-right: 1%; padding-top: 1%; padding-bottom: 1%; flex-direction: row; flex-wrap: wrap;">
+                <ui:Button display-tooltip-when-elided="true" name="ItemSlot" class="bag__item__slot" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;">
+                    <ui:VisualElement name="EquipmentSprite" class="bag__item__slot__spirte" style="background-image: url(&apos;project://database/Assets/Basic_RPG_Icons/Items/Armor/Epic/Nobg/01_cloth_chest_E_nobg.png?fileID=2800000&amp;guid=8b44c1c64aeb7184cae04c8850adea85&amp;type=3#01_cloth_chest_E_nobg&apos;);" />
+                </ui:Button>
+            </ui:VisualElement>
+            <ui:VisualElement name="RosterContainer" style="flex-grow: 1; height: 40%; flex-direction: row; flex-wrap: wrap;">
+                <ui:Button display-tooltip-when-elided="true" name="CharacterContainer" class="character__slot" style="background-color: rgba(56, 56, 56, 0);">
+                    <ui:VisualElement name="CharacterSprite" class="character__slot__sprite" style="background-image: url(&apos;project://database/Assets/BayatGames/Free%20Platform%20Game%20Assets/Environments/New%20Details%20(%20Update%201.9%20)/8x/Flower-1.png?fileID=2800000&amp;guid=75bbd849a8be84a4dbc03e1a589904bf&amp;type=3#Flower-1&apos;);" />
+                </ui:Button>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="height: 329px; flex-direction: column; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 18px; margin-right: 18px; margin-top: 18px; margin-bottom: 18px; align-items: center;">
+        <ui:VisualElement name="StartButton" style="height: 10%; width: 50%; flex-direction: column; border-left-color: rgb(0, 255, 22); border-right-color: rgb(0, 255, 22); border-top-color: rgb(0, 255, 22); border-bottom-color: rgb(0, 255, 22); background-color: rgb(0, 255, 41); color: rgb(0, 0, 0); justify-content: center; align-items: center; right: auto;">
+            <ui:Label text="Start" display-tooltip-when-elided="true" style="height: 39px; -unity-font-style: bold; -unity-text-align: middle-center; font-size: 30%;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="SettingButton" style="height: 10%; width: 50%; flex-direction: column; border-left-color: rgb(0, 255, 22); border-right-color: rgb(0, 255, 22); border-top-color: rgb(0, 255, 22); border-bottom-color: rgb(0, 255, 22); background-color: rgb(0, 255, 41); color: rgb(0, 0, 0); justify-content: center; align-items: center; right: auto; margin-left: 14px; margin-right: 14px; margin-top: 14px; margin-bottom: 14px;">
+            <ui:Label text="Setting" display-tooltip-when-elided="true" style="height: 39px; -unity-font-style: bold; -unity-text-align: middle-center; font-size: 30%;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ExitButton" style="height: 10%; width: 50%; flex-direction: column; border-left-color: rgb(0, 255, 22); border-right-color: rgb(0, 255, 22); border-top-color: rgb(0, 255, 22); border-bottom-color: rgb(0, 255, 22); background-color: rgb(0, 255, 41); color: rgb(0, 0, 0); justify-content: center; align-items: center; right: auto;">
+            <ui:Label text="Exit" display-tooltip-when-elided="true" style="height: 39px; -unity-font-style: bold; -unity-text-align: middle-center; font-size: 30%;" />
+        </ui:VisualElement>
+        <ui:Button text="Button" display-tooltip-when-elided="true" />
+    </ui:VisualElement>
+</ui:UXML>

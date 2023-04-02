@@ -1,0 +1,43 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/CSS/MainScreen.uss?fileID=7433441132597879392&amp;guid=ce4be521e342443a283ab4d788dc402a&amp;type=3#MainScreen" />
+    <ui:VisualElement name="Container" style="background-image: url(&apos;project://database/Assets/BayatGames/Free%20Platform%20Game%20Assets/Backgrounds/Background/png/2048x1536/Background/Background.png?fileID=2800000&amp;guid=f222fb00e3182624888826a2fc58db96&amp;type=3#Background&apos;); width: auto; height: auto; flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement name="LeftContainer" style="width: 60%;">
+            <ui:VisualElement name="BagContainer" style="height: 60%; flex-wrap: wrap; flex-direction: row; border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-left-color: rgb(0, 255, 35); border-right-color: rgb(0, 255, 35); border-top-color: rgb(0, 255, 35); border-bottom-color: rgb(0, 255, 35); justify-content: center; align-items: center; margin-top: 0; flex-grow: 1; padding-left: 9px; padding-right: 9px; padding-top: 9px; padding-bottom: 9px;">
+                <ui:Button text="&#10;" display-tooltip-when-elided="true" name="Button0" class="bag__item2" />
+                <ui:Button text="&#10;" display-tooltip-when-elided="true" name="Button1" class="bag__item2" />
+                <ui:Button text="&#10;" display-tooltip-when-elided="true" name="Button2" class="bag__item2" />
+                <ui:Button text="&#10;" display-tooltip-when-elided="true" name="Button3" class="bag__item2" />
+                <ui:Button text="&#10;" display-tooltip-when-elided="true" name="Button4" class="bag__item2" />
+                <ui:Button text="&#10;" display-tooltip-when-elided="true" name="Button5" class="bag__item2" />
+                <ui:Button text="&#10;" display-tooltip-when-elided="true" name="Button6" class="bag__item2" />
+                <ui:Button text="&#10;" display-tooltip-when-elided="true" name="Button7" class="bag__item2" />
+                <ui:Button text="&#10;" display-tooltip-when-elided="true" name="Button8" class="bag__item2" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemInfoContainer" style="flex-grow: 1; flex-direction: row; height: 40%;">
+                <ui:VisualElement name="InfoLeftContainer" style="width: 33%; justify-content: center; align-items: center;">
+                    <ui:Label text="Label" display-tooltip-when-elided="true" name="InfoLeftLabel" />
+                </ui:VisualElement>
+                <ui:VisualElement name="InfoMiddleContainer" style="width: 33%; align-items: center; justify-content: center;">
+                    <ui:Label text="Label" display-tooltip-when-elided="true" name="InfoMiddleLabel" />
+                </ui:VisualElement>
+                <ui:VisualElement name="InfoRightContainer" style="width: 33%; align-items: center; justify-content: center;">
+                    <ui:Button text="Equip" display-tooltip-when-elided="true" name="EquipButton" style="opacity: 1; display: none; width: 64%; height: 36%;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="RightContainer" style="flex-grow: 1;">
+            <ui:VisualElement name="RosterContainer" style="height: 40%; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: center;">
+                <ui:VisualElement class="inventory__screen__roster" style="width: 50%; height: 50%; background-image: url(&apos;project://database/Packages/com.unity.2d.animation/Editor/Assets/SkinningModule/Icons/Selected/Split%20Bones@4x.png?fileID=2800000&amp;guid=518ded92e5dbf494e8f76a74d752272e&amp;type=3#Split Bones@4x&apos;); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); display: none;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ChracterInfoContainer" style="flex-grow: 1; border-left-color: rgb(13, 0, 255); border-right-color: rgb(13, 0, 255); border-top-color: rgb(13, 0, 255); border-bottom-color: rgb(13, 0, 255); border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; flex-direction: row;">
+                <ui:VisualElement name="StatsContainer" style="width: 50%; -unity-text-align: middle-center;">
+                    <ui:Label text="Label" display-tooltip-when-elided="true" name="StatsLabel" style="flex-grow: 1;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="EquipContainer" style="flex-grow: 1; flex-shrink: 0; align-items: center; justify-content: center;">
+                    <ui:VisualElement name="Weapon" class="equip" />
+                    <ui:VisualElement name="Armor" class="equip" style="width: 64%;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

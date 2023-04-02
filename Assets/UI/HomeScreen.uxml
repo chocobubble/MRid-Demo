@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/HomeScreen.uss?fileID=7433441132597879392&amp;guid=17ebeef522ae24cc1b73ac03a26bd3ce&amp;type=3#HomeScreen" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; align-items: center; justify-content: flex-start; background-image: url(&apos;project://database/Assets/Brackeys/2D%20Mega%20Pack/Environment/Stick%20Figure-like/Ground&amp;Sky.png?fileID=2800000&amp;guid=e9b385355511d7a458cae8d8e592ed23&amp;type=3#Ground&amp;Sky&apos;);">
+        <ui:VisualElement name="Title" style="width: 100%; height: 16%; margin-top: 30px;">
+            <ui:Label text="MRid" display-tooltip-when-elided="true" name="TitleText" style="-unity-text-align: upper-center; font-size: 50px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Buttons" style="flex-grow: 1; flex-direction: column; width: 40%; margin-top: 10%; margin-bottom: 10%; justify-content: center;">
+            <ui:Button text="START" display-tooltip-when-elided="true" name="StartButton" />
+            <ui:Button text="SETTINGS" display-tooltip-when-elided="true" name="SettingsButton" />
+            <ui:Button text="EXIT" display-tooltip-when-elided="true" name="ExitButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

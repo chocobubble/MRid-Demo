@@ -1,0 +1,42 @@
+.equiped__style {
+    width: 30%;
+    height: 70%;
+    background-image: resource('UIDifferentFree03Wenrexa/PNG/Cell01');
+    opacity: 0.8;
+}
+
+.bag__item__slot {
+    flex-grow: 0;
+    background-image: none;
+    width: 16%;
+    height: 30%;
+}
+
+.character__slot {
+    width: 16%;
+    height: 50%;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-image: none;
+    opacity: 1;
+    flex-grow: 0;
+}
+
+.character__slot__sprite {
+    flex-grow: 1;
+}
+
+.bag__item__slot__spirte {
+    background-image: none;
+    flex-grow: 1;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}

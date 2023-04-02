@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:Template name="ProgressBar" src="project://database/Assets/UI/ProgressBar.uxml?fileID=9197481963319205126&amp;guid=14d5a9493c40e4d7eb6fb153595e306c&amp;type=3#ProgressBar" />
+    <ui:VisualElement style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Brackeys/2D%20Mega%20Pack/--%20Example%20Photos%20--/Gothic%20Rogue-like%20Example.png?fileID=2800000&amp;guid=7576666deaabf1445bc7f71d96a0162e&amp;type=3#Gothic Rogue-like Example&apos;);">
+        <ui:Instance template="ProgressBar" name="ProgressBar" style="flex-grow: 1; align-items: center; justify-content: flex-end;" />
+    </ui:VisualElement>
+</ui:UXML>

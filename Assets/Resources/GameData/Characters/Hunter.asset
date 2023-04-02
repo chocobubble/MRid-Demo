@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d7fa7e0864a49c4bc184eaae4e1c4c, type: 3}
+  m_Name: Hunter
+  m_EditorClassIdentifier: 
+  responseSpeed: 1
+  baseAttackDamage: 1
+  skillAttackDamage: 1000
+  baseAttackCooltime: 1
+  initHp: 100
+  defense: 0
+  speed: 10
+  attackDistance: 4
+  characterName: Hunter
+  characterVisualsPrefab: {fileID: 6487494145041874554, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+  visual: {fileID: -9020406824871800643, guid: 2262f408278271248889a3ea3c7e75bf, type: 3}
+  characterClass: 2
+  rarity: 0
+  attackType: 0
+  basePointsCriticalHit: 0
+  age: 2
+  xp: 0
+  characterLevel: 0
+  skill1: {fileID: 0}
+  defaultWeapon: {fileID: 0}
+  defaultHelmet: {fileID: 0}

@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="HpBar" src="project://database/Assets/UI/HpBar.uxml?fileID=9197481963319205126&amp;guid=53bafff85bdec4af6aea810942d4b19b&amp;type=3#HpBar" />
+    <ui:VisualElement name="Container" style="flex-direction: row; flex-grow: 1;">
+        <ui:VisualElement name="AllyHpBarContainer" style="flex-grow: 1;">
+            <ui:Instance template="HpBar" name="HpBar1" style="display: none;" />
+            <ui:Instance template="HpBar" name="HpBar2" style="display: none;" />
+            <ui:Instance template="HpBar" name="HpBar3" style="display: none;" />
+            <ui:Instance template="HpBar" name="HpBar4" style="display: none;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="EnemyHpBarContainer" style="flex-grow: 1;">
+            <ui:Instance template="HpBar" name="EnemyHpBar1" style="position: relative; right: 0; flex-direction: row-reverse;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

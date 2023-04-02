@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="InventoryMRid" src="project://database/Assets/UI/InventoryMRid.uxml?fileID=9197481963319205126&amp;guid=febc7fe5f49c94049aaf04b4683df269&amp;type=3#Inventory 1" />
+    <ui:Instance template="InventoryMRid" name="Inventory 1" style="flex-grow: 1;" />
+</ui:UXML>

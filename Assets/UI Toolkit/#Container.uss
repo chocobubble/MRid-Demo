@@ -1,0 +1,5 @@
+#Container {
+    flex-grow : 1;
+    background-image: var(--background-img);
+    flex-direction: row;
+}

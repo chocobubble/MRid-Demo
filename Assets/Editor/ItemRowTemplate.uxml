@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="ItemRow" style="justify-content: center; height: 35px;">
+        <ui:VisualElement name="Row" style="flex-direction: row; align-items: center;">
+            <ui:VisualElement name="Icon" style="width: 25px; height: 25px; background-image: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2346436936791262179&amp;guid=21eb2b688f5584467b7ee0a2a618ce3a&amp;type=3#console.infoicon&apos;);" />
+            <ui:Label text="Unknown" display-tooltip-when-elided="true" name="Name" style="flex-grow: 1; padding-left: 5px; padding-top: 0; padding-bottom: 0;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

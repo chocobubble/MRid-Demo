@@ -1,0 +1,26 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="Toolbar" style="flex-direction: row; flex-grow: 1;">
+        <ui:VisualElement name="LeftContainer" style="width: auto; flex-grow: 1; justify-content: center;">
+            <ui:VisualElement name="InformationContainer" style="flex-direction: row; flex-grow: 0;">
+                <ui:VisualElement name="DateContainer" style="flex-direction: row-reverse; flex-grow: 1;">
+                    <ui:VisualElement name="LabelContainer">
+                        <ui:Label text="Label" display-tooltip-when-elided="true" name="DateLabel" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="DateImage" style="background-image: url(&apos;project://database/Assets/JMO%20Assets/Cartoon%20FX%20(legacy)/Textures/CFX_T_Star%20Add.png?fileID=2800000&amp;guid=df9dab791d4192b4694f9a442f64b18d&amp;type=3#CFX_T_Star Add&apos;); width: 30px; height: 30px; background-color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="MoneyContainer" style="flex-direction: row; flex-grow: 0;">
+                    <ui:VisualElement name="MoneyImage" style="background-image: url(&apos;project://database/Assets/BayatGames/Free%20Platform%20Game%20Assets/Coin%20Animation/png/2x/Coin.png?fileID=2800000&amp;guid=5ed5157cf45e6ee409511594fb89377b&amp;type=3#Coin&apos;); width: 30px; height: 30px; flex-grow: 0;" />
+                    <ui:VisualElement name="LabelContainer">
+                        <ui:Label text="Label" display-tooltip-when-elided="true" name="MoneyLabel" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="BackButton" style="flex-grow: 0; width: 20%;">
+            <ui:Button text="Back" display-tooltip-when-elided="true" />
+        </ui:VisualElement>
+        <ui:VisualElement name="SettingsButton" style="background-image: none; width: 32px; height: 32px;">
+            <ui:Button display-tooltip-when-elided="true" style="background-image: url(&apos;project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/buttonssosigninunity.png?fileID=2800000&amp;guid=f9161c6c9e06dc445ada3ee16d991f90&amp;type=3#buttonssosigninunity&apos;);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

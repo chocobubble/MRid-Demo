@@ -1,0 +1,209 @@
+.background__fade--on {
+    opacity: 0.2;
+}
+
+.background__fade--off {
+    opacity: 1;
+}
+
+.main__button {
+    opacity: 0.2;
+}
+
+.main__button--active {
+    opacity: 1;
+}
+
+.prepare-screen-roster {
+    display: none;
+}
+
+.prepare-screen-fighting-roster {
+}
+
+.popup__screen {
+    background-image: url('project://database/Assets/Brackeys/2D%20Mega%20Pack/Backgrounds/SkyBackground.png?fileID=2800000&guid=bb7547187a9980a4694d9a520186d028&type=3#SkyBackground');
+    width: auto;
+    height: auto;
+    flex-grow: 1;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    flex-direction: row;
+}
+
+.bag__item2 {
+    width: 28%;
+    height: 30.4%;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    display: flex;
+    background-image: resource('UIDifferentFree03Wenrexa/PNG/Cell01');
+    flex-direction: row;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-left: 0.3%;
+    margin-right: 0.3%;
+    margin-top: 0.3%;
+    margin-bottom: 0.3%;
+    justify-content: flex-start;
+}
+
+.slotIcon {
+    padding: 0;
+    flex-shrink: 0;
+    flex-grow: 1;
+}
+
+.slotContainer {
+    width: 18%;
+    height: 32%;
+    margin: 5px;
+    background-color: rgb(9, 19, 21);
+    background-image: resource('UIDifferentFree03Wenrexa/PNG/Cell01');
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.rosterContainer {
+    width: 22.5%;
+    height: 40%;
+    margin: 5px;
+    border-left-color: rgb(48, 48, 48);
+    border-right-color: rgb(48, 48, 48);
+    border-top-color: rgb(48, 48, 48);
+    border-bottom-color: rgb(48, 48, 48);
+    background-color: rgb(9, 19, 21);
+    background-image: url('project://database/Assets/JMO%20Assets/Cartoon%20FX%20Remaster/Demo%20Assets/UI/CFXR%20Demo%20Btn%20Ground%20H.png?fileID=2800000&guid=338685d7a91449f45a6a95b3756c4750&type=3#CFXR Demo Btn Ground H');
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.invisible__button {
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 100%;
+    opacity: 0;
+    display: flex;
+    padding: -20px;
+}
+
+.equip {
+    width: 64%;
+    height: 36%;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.mercernary__container {
+    flex-direction: row;
+    height: 20%;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+}
+
+.mercernary__container__active {
+    flex-direction: row;
+    height: 20%;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-left-color: rgb(0, 6, 255);
+    border-right-color: rgb(0, 6, 255);
+    border-top-color: rgb(0, 6, 255);
+    border-bottom-color: rgb(0, 6, 255);
+}
+
+.mercernary__info__label {
+    flex-grow: 1;
+    flex-shrink: 1;
+    -unity-text-align: middle-center;
+}
+
+.mercernary__button {
+    flex-grow: 0;
+    flex-shrink: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    visibility: visible;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: rgb(251, 192, 73);
+    background-image: url('project://database/Assets/Brackeys/2D%20Mega%20Pack/Backgrounds/FieldBackground.png?fileID=2800000&guid=816d352463058f7488a74e1e59af50f1&type=3#FieldBackground');
+    flex-direction: row;
+}
+
+.mercernar__sprite {
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    flex-grow: 0;
+    background-image: url('project://database/Assets/Basic_RPG_Icons/Char/Man_1.png?fileID=2800000&guid=ba7b3ed94bec5c64ab4ee22be5e0f9fa&type=3#Man_1');
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    width: 32%;
+}
+
+.selling__item {
+    width: 22.4%;
+    height: 45%;
+    border-left-color: rgb(255, 222, 52);
+    border-right-color: rgb(255, 222, 52);
+    border-top-color: rgb(255, 222, 52);
+    border-bottom-color: rgb(255, 222, 52);
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+}
+
+.selling__item__deactive {
+    width: 22.4%;
+    height: 45%;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+}
+
+.color__border {
+    border-left-color: rgb(237, 255, 0);
+    border-right-color: rgb(237, 255, 0);
+    border-top-color: rgb(237, 255, 0);
+    border-bottom-color: rgb(237, 255, 0);
+}
