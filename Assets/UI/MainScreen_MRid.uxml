@@ -18,7 +18,7 @@
                     <ui:Instance template="ShopScreen" name="ShopScreen" style="flex-grow: 1; display: none;" />
                     <ui:Instance template="EquipmentScreen" name="EquipmentScreen" style="flex-grow: 1; display: none;" />
                     <ui:Instance template="PubScreen" name="PubScreen" style="flex-grow: 1; display: none;" />
-                    <ui:Instance template="InventoryScreenV2" name="InventoryScreen" style="flex-grow: 1;" />
+                    <ui:Instance template="InventoryScreenV2" name="InventoryScreen" style="flex-grow: 1; display: none;" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
