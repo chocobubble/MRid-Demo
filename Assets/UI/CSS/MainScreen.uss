@@ -15,7 +15,10 @@
 }
 
 .prepare-screen-roster {
-    display: none;
+    display: flex;
+    flex-grow: 0;
+    width: 22%;
+    height: 22%;
 }
 
 .prepare-screen-fighting-roster {
@@ -206,4 +209,9 @@
     border-right-color: rgb(237, 255, 0);
     border-top-color: rgb(237, 255, 0);
     border-bottom-color: rgb(237, 255, 0);
+}
+
+.dungeon__container {
+    margin-bottom: 10%;
+    height: 15%;
 }

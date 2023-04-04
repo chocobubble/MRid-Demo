@@ -104,7 +104,8 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("showdungeonscreen");
         ShowModalScreen(m_DungeonModalScreen);
-        prepareScreenGO.SetActive(true);
+        m_DungeonModalScreen.SetDungeonScreen();
+        //prepareScreenGO.SetActive(true);
     }
     public void ShowInventoryScreen()
     {

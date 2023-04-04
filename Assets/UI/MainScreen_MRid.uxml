@@ -23,5 +23,5 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:Instance template="PrepareScreen" name="PrepareScreen" style="overflow: visible; visibility: visible; position: absolute; top: 0; left: 0; height: 100%; width: 100%; flex-grow: 1; display: none;" />
+    <ui:Instance template="PrepareScreen" name="PrepareScreen" style="overflow: visible; visibility: visible; position: absolute; top: 0; left: 0; height: 100%; width: 100%; flex-grow: 1; display: flex;" />
 </ui:UXML>

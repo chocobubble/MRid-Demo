@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8223b3dcf953c495b9310485d916120f, type: 3}
-  m_Name: Level01
+  m_Name: LevelData 1
   m_EditorClassIdentifier: 
-  levelNumber: 1
-  levelLabel: 1
-  thumbnail: {fileID: 21300000, guid: 4574f971d70a83c41ade6083ada1035a, type: 3}
+  dungeonName: UFO
+  dungeonNumber: 1
+  dungeonHardness: 0
+  dungeonSprite: {fileID: 21300000, guid: a8166ea434d337349818825bff42d2f6, type: 3}
   sceneName: Game
+  goldEarning: 1000
+  xpGetting: 50

@@ -7,7 +7,9 @@ using UnityEngine;
     public class LevelSO : ScriptableObject
     {
         public string dungeonName;
+        // kind of dungeon
         public int dungeonNumber;
+        // level of dungeon
         public int dungeonHardness;
         public Sprite dungeonSprite;
         public string sceneName;

@@ -15,6 +15,8 @@ namespace MRidDemo
         /// For Testing
         public List<EquipmentSO> defaultItems = new List<EquipmentSO>();
         /// For Testing end
+
+        public GameDataSO gameDataSO;
         public bool Onskill = false;
         public bool isDungeonEnded = false;
         public bool isFailed = true;
