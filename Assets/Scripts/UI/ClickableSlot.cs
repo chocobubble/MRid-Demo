@@ -6,9 +6,12 @@ using UnityEngine.UIElements;
 namespace MRidDemo{
 public class ClickableSlot : Button
 {
-    public Image Icon;
+    public Image icon;
     public Button button;
+    public Label info;
     public string ItemGuid;
+    public int characterIdx;
+    public bool isClicked = false;
     /*
     public ClickableSlot(string container, string slotSprite, string name)
     {
@@ -70,6 +73,20 @@ public class ClickableSlot : Button
         {
             this.AddToClassList("bag__item__slot--equiped");
         }
+    }
+
+    public ClickableSlot(string name, int idx)
+    {
+        this.text = "";
+        this.name = name;
+        this.AddToClassList("prepare-screen-roster");
+        characterIdx = idx;
+        icon = new Image();
+        icon.AddToClassList("prepare-screen-roster-sprite");
+        info = new Label();
+        info.AddToClassList("prepare-screen-roster-info");
+        this.Add(icon);
+        this.Add(info);
     }
 
     void click()

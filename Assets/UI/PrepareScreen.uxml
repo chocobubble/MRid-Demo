@@ -1,29 +1,34 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/CSS/MainScreen.uss?fileID=7433441132597879392&amp;guid=ce4be521e342443a283ab4d788dc402a&amp;type=3#MainScreen" />
-    <ui:VisualElement name="Container" class="popup__screen">
-        <ui:VisualElement name="LeftContainer" style="flex-direction: column; flex-grow: 1; width: 70%; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;">
+    <ui:VisualElement name="Container" class="popup__screen" style="margin-left: 1%; margin-right: 1%; margin-top: 1%; margin-bottom: 1%;">
+        <ui:VisualElement name="LeftContainer" style="flex-direction: column; flex-grow: 1; width: 60%; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;">
             <ui:VisualElement name="Minimap" style="height: 70%; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; margin-left: 2%; margin-right: 2%; margin-top: 2%; margin-bottom: 2%; background-image: url(&apos;project://database/Assets/Brackeys/2D%20Mega%20Pack/Environment/DungeonFrame2.png?fileID=2800000&amp;guid=647450ba17135774fb5972a3c1eb9325&amp;type=3#DungeonFrame2&apos;);" />
-            <ui:VisualElement name="FightListBox" style="flex-grow: 1; flex-direction: row; align-items: stretch; justify-content: space-around;">
+            <ui:VisualElement name="FightListBox" style="flex-grow: 1; flex-direction: row; align-items: stretch; justify-content: space-around; padding-bottom: 5%; padding-left: 3%; padding-right: 3%;">
                 <ui:Button display-tooltip-when-elided="true" name="FightListButton1" class="prepare-screen-fighting-roster" style="width: 20%;" />
                 <ui:Button display-tooltip-when-elided="true" name="FightListButton2" class="prepare-screen-fighting-roster" style="width: 20%;" />
                 <ui:Button display-tooltip-when-elided="true" name="FightListButton3" class="prepare-screen-fighting-roster" style="width: 20%;" />
                 <ui:Button display-tooltip-when-elided="true" name="FightListButton4" class="prepare-screen-fighting-roster" style="width: 20%;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="RightContainer" style="flex-grow: 1; width: 30%;">
-            <ui:VisualElement name="OptionBar" style="height: 13%; flex-grow: 0; flex-direction: row; justify-content: center;">
-                <ui:Button text="Start" display-tooltip-when-elided="true" name="BattleStartButton" />
-                <ui:Button display-tooltip-when-elided="true" name="BackButton" style="background-image: url(&apos;project://database/Assets/Brackeys/2D%20Mega%20Pack/Shapes/X.png?fileID=2800000&amp;guid=b077818db7df77e4db729d473295e99e&amp;type=3#X&apos;); -unity-background-scale-mode: scale-to-fit; background-color: rgb(190, 181, 78); -unity-text-align: middle-center; overflow: hidden; width: auto; height: auto; position: relative; right: 0; top: auto;" />
-            </ui:VisualElement>
+        <ui:VisualElement name="RightContainer" style="flex-grow: 1; width: 40%;">
             <ui:VisualElement name="Roster" style="flex-grow: 1; flex-wrap: wrap; flex-direction: row; align-items: flex-start; justify-content: flex-start; margin-left: 0; margin-right: 0; margin-top: 5%; margin-bottom: 5%; -unity-background-scale-mode: stretch-to-fill;">
-                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton1" class="prepare-screen-roster" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton2" class="prepare-screen-roster" style="flex-grow: 0; flex-shrink: 0; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; height: 22%; display: none;" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton3" class="prepare-screen-roster" style="flex-grow: 0; flex-shrink: 0; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; height: 22%; display: none;" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton4" class="prepare-screen-roster" style="flex-grow: 0; flex-shrink: 0; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; height: 22%; display: none;" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton5" class="prepare-screen-roster" style="flex-grow: 0; flex-shrink: 0; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; height: 22%; display: none;" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton6" class="prepare-screen-roster" style="flex-grow: 0; flex-shrink: 0; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; height: 22%; display: none;" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton7" class="prepare-screen-roster" style="flex-grow: 0; flex-shrink: 0; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; height: 22%;" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton8" class="prepare-screen-roster" style="flex-grow: 0; flex-shrink: 0; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; height: 22%;" />
+                <ui:Button display-tooltip-when-elided="true" name="RosterButton1" class="prepare-screen-roster">
+                    <ui:VisualElement name="RosterSprite" class="prepare-screen-roster-sprite" />
+                    <ui:Label text="Name : moon&#10;Level : 1" display-tooltip-when-elided="true" name="RosterInfo" class="prepare-screen-roster-info" />
+                </ui:Button>
+                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton2" class="prepare-screen-roster" />
+                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton3" class="prepare-screen-roster" />
+                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton4" class="prepare-screen-roster" />
+                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton5" class="prepare-screen-roster" />
+                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton6" class="prepare-screen-roster" />
+                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton7" class="prepare-screen-roster" />
+                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton8" class="prepare-screen-roster" />
+                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton8" class="prepare-screen-roster" />
+                <ui:Button text="Button" display-tooltip-when-elided="true" name="RosterButton8" class="prepare-screen-roster" />
+            </ui:VisualElement>
+            <ui:VisualElement name="OptionBar" style="height: 13%; flex-grow: 0; flex-direction: row; justify-content: center; margin-bottom: 10%;">
+                <ui:Button text="START" display-tooltip-when-elided="true" name="BattleStartButton" class="battle__startandback__button" />
+                <ui:Button display-tooltip-when-elided="true" name="BackButton" text="BACK" class="battle__startandback__button" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

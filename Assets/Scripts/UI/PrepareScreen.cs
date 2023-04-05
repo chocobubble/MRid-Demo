@@ -9,13 +9,15 @@ namespace MRidDemo
 public class PrepareScreen : MenuScreen
 {
     VisualElement dungeonScreen;
+    VisualElement fightListBox;
+    VisualElement rosterBox;
     Button backButton;
     Button battleStartButton;
 
     [SerializeField]
     List<Button> rosterButtons = new List<Button>();
     [SerializeField]
-    List<Button> fightingListButtons = new List<Button>();
+    List<Button> fightingListButtons = new List<Button>(4);
 
     // GameManager gameManager;
     VisualElement prepareScreen;
@@ -27,8 +29,9 @@ public class PrepareScreen : MenuScreen
     //[SerializeField]
     //List<CharacterSO> characterList = new List<CharacterSO>();
     
-    List<CharacterSO> fightingList = new List<CharacterSO>(4);
-    [SerializeField]
+    public List<CharacterSO> fightingList = new List<CharacterSO>(4);
+    public List<ClickableSlot> rosterSlotList = new List<ClickableSlot>();
+    //[SerializeField]
     //List<GameObject> fightingList = new List<GameObject>(4);
 
     void OnEnable()
@@ -38,38 +41,41 @@ public class PrepareScreen : MenuScreen
 
         prepareScreen = m_Root.Q<VisualElement>("PrepareScreen");
         dungeonScreen = m_Root.Q<VisualElement>("DungeonScreen");
+        
+        fightListBox = m_Screen.Q<VisualElement>("FightListBox");
+        rosterBox = m_Screen.Q<VisualElement>("Roster");
+
         backButton.clicked += BackToMainScreen;
         battleStartButton.clicked += StartBattleButtonOnClick;
 
+        for (int i=1; i<5; i++) 
+        {
+            string t = fightingListButtonID + i;
+            Button tempButton = m_Screen.Q<Button>(t);
+            tempButton.RegisterCallback<ClickEvent, int>(returnToRoster, i);
+            fightingListButtons.Add(tempButton);
+        }
+
         Debug.Log("Prepare Screen OnEnable");
+    }
+    void returnToRoster(ClickEvent cvt, int _i)
+    {
+        Button targetButton = cvt.target as Button;
+        fightingList[_i-1] = null;
+
+        fightingListButtons[_i-1].text = "";
+
+        rosterSlotList[System.Convert.ToInt32(targetButton.name)].isClicked = false;
     }
 
     public void SetPrepareScreen()
     {
-        // gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Debug.Log("Prepare screen Start");
-        //characterList = gameManager.GMcharacterList;
-        for(int i=0; i<4; i++) 
-        {
-            fightingList.Add(null);
-        }
-        SettingPrepareScreen();
-        
+        //Debug.Log("Prepare screen Start");
 
-        /*
-        foreach(CharacterSO c in gameManager.characterList)
-        {
-            characterList.Add(c);
-        }
-        for (int i=1; i <= characterList.Count; i++)
-        {
-            ShowVisualElement(rosterButtons[i+1], true);
-            Debug.Log("roster..");
-            rosterButtons[i].text = characterList[i].characterName;
-            Debug.Log(rosterButtons[i].text);
-        } 
-        */
+
+        SettingPrepareScreen();
     }
+
     void BackToMainScreen()
     {
         //ShowVisualElement(prepareScreen, false);
@@ -116,102 +122,65 @@ public class PrepareScreen : MenuScreen
 
     public void SettingPrepareScreen()
     {
+        for (int i=0; i<fightingList.Count; i++)
+        {
+            fightingList[i] = null;
+        }
 
-        for (int i=1; i<5; i++) 
+        for (int i=fightingList.Count; i<4; i++)
         {
-            string t = fightingListButtonID + i;
-            //Debug.Log(t);
-            Button temp = m_Root.Q<Button>(t);
-            if (temp == null) Debug.Log("fk");
-            fightingListButtons.Add(temp);
+            fightingList.Add(null);
         }
-        
-        for (int i=1; i<9; i++)
-        {
-            string t = rosterButtonID + i;
-            rosterButtons.Add(m_Root.Q<Button>(t));
-            //Debug.Log(m_Root.Q<Button>(t).text);
-        }
-/*
-        foreach(CharacterSO c in gameManager.GMcharacterList)
-        {
-            characterList.Add(c);
-        }
-*/
+        // fightListBox.Clear();
+        rosterBox.Clear();
+
         for (int i=0; i < gameManager.GMcharacterList.Count; i++)
         {
-            ShowVisualElement(rosterButtons[i], true);
-            //Debug.Log("roster..");
-            if(rosterButtons[i].text == null) Debug.Log("null button's text");
-            string cname = gameManager.GMcharacterList[i].characterName;
-            //if(characterList[i].characterName == null) Debug.Log("null character name");
-            //Debug.Log(rosterButtons[i].text + " " + characterList[i].characterName);
-            
-            //rosterButtons[i].text = characterList[i].characterName;
-            rosterButtons[i].text = cname;
-            //rosterButtons[i].clicked += SetToFightingRoster;
-            rosterButtons[i].RegisterCallback<ClickEvent, VisualElement>(SetToFightingRoster, rosterButtons[i]);
-            Debug.Log(rosterButtons[i].text);
+            ClickableSlot rosterSlot = new ClickableSlot(gameManager.GMcharacterList[i].characterName, i);
+            rosterSlot.icon.style.backgroundImage = new StyleBackground(gameManager.GMcharacterList[i].visual);
+            rosterSlot.info.text = $"Name : {rosterSlot.name} \n" + $"Level : {gameManager.GMcharacterList[i].characterLevel}";
+            rosterSlot.RegisterCallback<ClickEvent, ClickableSlot>(SetToFightingRoster, rosterSlot);
+            rosterBox.Add(rosterSlot);
+            rosterSlotList.Add(rosterSlot);
+            //Debug.Log(rosterButtons[i].text);
         }
     }
 
-    void SetToFightingRoster(ClickEvent evt, VisualElement ve) 
+    void SetToFightingRoster(ClickEvent evt, ClickableSlot cs) 
     {
-        int fightingRosterIdx = 0;
-        while (fightingRosterIdx < 4)
+        if (cs.isClicked == true) return;
+        cs.isClicked = true;
+        int emptyIdx = 0;
+        while (emptyIdx < 4)
         {
-            if (fightingList[fightingRosterIdx] != null) fightingRosterIdx++;
+            if (fightingList[emptyIdx] != null) emptyIdx++;
             else
             {
-                Debug.Log("fightingRosterIdx = " + fightingRosterIdx);
+                Debug.Log("emptyIdx = " + emptyIdx);
                 break;
             }
         }
-        if (fightingRosterIdx == 4) Debug.Log("The roster is full");
+        if (emptyIdx == 4) Debug.Log("The roster is full");
         else 
         {
-            string t = ve.name;
-            char c = t[^1];
-            Debug.Log("string : " + t + " / char : " + c );
-            int characterIdx = c - '1';
-            Debug.Log("characteridx = " + characterIdx + " / listsize = " + gameManager.GMcharacterList.Count);//characterList.Count);
-            fightingList[fightingRosterIdx] = gameManager.GMcharacterList[characterIdx];
-            //int curFightingRosterIdx = fightingRosterIdx + 1;
-            fightingListButtons[fightingRosterIdx].text =
-                fightingList[fightingRosterIdx].characterName;
-            fightingListButtons[fightingRosterIdx].RegisterCallback<ClickEvent, VisualElement>(returnToRoster, fightingListButtons[fightingRosterIdx]);
+            //string t = ve.name;
+            //char c = t[^1];
+            //Debug.Log("string : " + t + " / char : " + c );
+            int characterIdx = cs.characterIdx;
+            //Debug.Log("characteridx = " + characterIdx + " / listsize = " + gameManager.GMcharacterList.Count);//characterList.Count);
+            fightingList[emptyIdx] = gameManager.GMcharacterList[characterIdx];
+            //int curemptyIdx = emptyIdx + 1;
+            fightingListButtons[emptyIdx].text = fightingList[emptyIdx].characterName;
+            fightingListButtons[emptyIdx].name = characterIdx.ToString();
+            
+            //fightingListButtons[emptyIdx].RegisterCallback<ClickEvent, ClickableSlot>(returnToRoster, cs);
             
             // onceClicked -> deactivate
-            ve.UnregisterCallback<ClickEvent, VisualElement>(SetToFightingRoster);
+            // cs.UnregisterCallback<ClickEvent, VisualElement>(SetToFightingRoster);
 
             /// later, add a function to pop character from fightingList when this button clicked
         }
     }
 
-    void returnToRoster(ClickEvent evt, VisualElement ve)
-    {
-        string t =  ve.name;
-        char c = t[^1];
-        Debug.Log("string : " + t + " / char : " + c );
-        int idx = c - '1';
-        Debug.Log("characteridx = " + idx + " / listsize = " + gameManager.GMcharacterList.Count);
-        int rosterIdx = -1;
-        for(int i=0; i < gameManager.GMcharacterList.Count; i++)
-        {
-            if(gameManager.GMcharacterList[i].characterName == fightingListButtons[idx].text)
-            {
-                rosterIdx = i;
-                break;
-            } 
-        }
-        fightingList[idx] = null;
-
-        fightingListButtons[idx].text = "";
-
-        if (rosterIdx == -1) Debug.Log("fk!!");
-        else Debug.Log("rosteridx = " + rosterIdx);
-        rosterButtons[rosterIdx].RegisterCallback<ClickEvent, VisualElement>(SetToFightingRoster, rosterButtons[rosterIdx]);
-        ve.UnregisterCallback<ClickEvent, VisualElement>(returnToRoster);
-    }
 }
 }
