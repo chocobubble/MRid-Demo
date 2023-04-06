@@ -16,7 +16,7 @@ TagManager:
   - AttackArea
   - Player
   - Enemy
-  - 
+  - Tile
   - 
   - 
   - 
@@ -42,4 +42,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: first
+    uniqueID: 1556505849
     locked: 0

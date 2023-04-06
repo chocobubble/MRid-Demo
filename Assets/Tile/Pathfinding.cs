@@ -8,6 +8,7 @@ public class PathNode
   public int yPos;
   public int gValue;
   public int hValue;
+  public bool isObstacle = false;
 
   public PathNode parentNode;
   public int fValue
@@ -16,6 +17,10 @@ public class PathNode
     {
       return gValue + hValue;
     }
+  }
+  public Vector2 nodePos
+  {
+    get{return new Vector2(xPos, yPos);}
   }
 
   public PathNode(int xPos, int yPos)
@@ -28,7 +33,9 @@ public class PathNode
 [RequireComponent(typeof(GridMap))]
 public class Pathfinding : MonoBehaviour
 {
-  GridMap gridMap;
+  public int xLength;
+  public int yLength;
+  //GridMap gridMap;
   PathNode[,] pathNodes;
   private void Start()
   {
@@ -37,17 +44,13 @@ public class Pathfinding : MonoBehaviour
 
   private void Init()
   {
-    if (gridMap == null)
-    {
-      gridMap = GetComponent<GridMap>();
-    }
+    pathNodes = new PathNode[xLength, yLength];
 
-    pathNodes = new PathNode[gridMap.length, gridMap.height];
-
-    for (int x = 0; x < gridMap.length; x++)
+    for (int x = 0; x < xLength; x++)
     {
-      for (int y = 0; y < gridMap.height; y++)
+      for (int y = 0; y < yLength; y++)
       {
+        
         pathNodes[x, y] = new PathNode(x, y);
       }
     }
