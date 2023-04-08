@@ -157,12 +157,6 @@ MonoBehaviour:
   m_UIManager: {fileID: 610311805}
   m_Document: {fileID: 610311802}
   gameManager: {fileID: 0}
-  dungeonLevels:
-  - {fileID: 11400000, guid: 7750e34964cbf44cf84c297927f5fc4c, type: 2}
-  - {fileID: 11400000, guid: 29a9f5086082a4cea90e7884545329f6, type: 2}
-  - {fileID: 11400000, guid: 2c765da09c2bf4849982386d18bc711a, type: 2}
-  - {fileID: 11400000, guid: ea0ffe84a7f554c149aab1d8c396859e, type: 2}
-  - {fileID: 11400000, guid: 3a5412bcf00db43eb81e654399bb4b7e, type: 2}
   curDungeonLevel: 0
   curDungeonNumber: 0
   levelData: {fileID: 11400000, guid: efac81cbd324f4627b6473e06cbab177, type: 2}
@@ -230,6 +224,7 @@ MonoBehaviour:
   m_UIManager: {fileID: 610311805}
   m_Document: {fileID: 610311802}
   gameManager: {fileID: 0}
+  fightingList: []
 --- !u!4 &165981069
 Transform:
   m_ObjectHideFlags: 0
@@ -289,6 +284,8 @@ MonoBehaviour:
   GMcharacterList: []
   fightingMembers: []
   GMEquipmentList: []
+  levelSO: {fileID: 0}
+  dungeonLevel: 0
   money: 0
   date: 150
 --- !u!4 &456085732

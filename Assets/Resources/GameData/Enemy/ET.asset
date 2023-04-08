@@ -16,16 +16,20 @@ MonoBehaviour:
   baseAttackDamage: 1
   skillAttackDamage: 10
   baseAttackCooltime: 1
-  initHp: 1000
+  initHp: 10000
   defense: 0
   speed: 10
   attackDistance: 1
   characterName: ET
   characterVisualsPrefab: {fileID: 0}
+  visual: {fileID: 0}
   characterClass: 2
   rarity: 0
   attackType: 0
   basePointsCriticalHit: 0
+  age: 0
+  xp: 0
+  characterLevel: 0
   skill1: {fileID: 0}
   defaultWeapon: {fileID: 0}
   defaultHelmet: {fileID: 0}

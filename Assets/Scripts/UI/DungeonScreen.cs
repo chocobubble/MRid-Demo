@@ -19,7 +19,7 @@ public class DungeonScreen : MenuScreen
     Button baseButton;
     Button level01;
     GameDataSO gameData;
-    public List<LevelSO> dungeonLevels = new List<LevelSO>();
+    //public List<LevelSO> dungeonLevels = new List<LevelSO>();
     public int curDungeonLevel;
     public int curDungeonNumber;
 
@@ -52,11 +52,10 @@ public class DungeonScreen : MenuScreen
         dungeonImage.style.backgroundImage = null;
         gameData = gameManager.gameDataSO;
 
+        //dungeonLevels = gameData.dungeons;
+
         curDungeonLevel = 0;
-        if(gameData.dungeonLevels.Count == 0)
-        {
-            gameData.dungeonLevels.Add(1);
-        }
+        if(gameData.dungeonLevels.Count == 0) Debug.LogWarning("there is no dungeonlevels on the game data");
 
         //baseButton.clicked += LeftButtonOnClick;
         //level01.clicked += LevelButtonOnClick;
@@ -65,7 +64,7 @@ public class DungeonScreen : MenuScreen
     public void SetDungeonScreen()
     {
         leftSide.Clear();
-        for(int i=0; i<gameData.curDungeonLevel; i++)
+        for(int i=0; i<gameData.dungeonLevels.Count; i++)
         {
             DungeonSlot _slot = new DungeonSlot((Number.FIRST+i).ToString());
             leftSide.Add(_slot);//DungeonSlot((Number.FIRST+i).ToString()));
@@ -79,7 +78,7 @@ public class DungeonScreen : MenuScreen
         
         // SO files destroy??
         middleSide.Clear();
-        for(int i=0; i<gameData.dungeonLevels[_i]; i++)
+        for(int i = 1; i <= gameData.dungeonLevels[_i]; i++)
         {
             DungeonSlot _slot = new DungeonSlot("Level " + i);
             _slot.dungeonLevel = i;
@@ -93,7 +92,7 @@ public class DungeonScreen : MenuScreen
         curDungeonLevel = _i;
         DungeonSlot targetDungeon = cvt.target as DungeonSlot;
         ShowVisualElement(dungeonImage, true);
-        dungeonImage.style.backgroundImage = new StyleBackground(dungeonLevels[curDungeonNumber].dungeonSprite);
+        dungeonImage.style.backgroundImage = new StyleBackground(gameData.dungeons[curDungeonNumber].dungeonSprite);
 
         Debug.Log("curDungeonNumber = " + curDungeonNumber);
         Debug.Log("curDungeonLevel = " +curDungeonLevel);

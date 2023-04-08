@@ -40,6 +40,8 @@ namespace MRidDemo
         // equiped equipment
         //public List<EquipmentSO> GMEquipedEquipmentList = new List<EquipmentSO>();
 
+        public LevelSO levelSO;
+        public int dungeonLevel;
         public int money;
         public int date = 150;
 

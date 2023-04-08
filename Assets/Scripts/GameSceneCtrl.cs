@@ -10,6 +10,8 @@ public class GameSceneCtrl : MonoBehaviour
     [SerializeField]
     GameManager gameManager;
 
+    GameObject mainCamera;
+
     [SerializeField]
     GameObject warrior;
     [SerializeField]
@@ -41,6 +43,9 @@ public class GameSceneCtrl : MonoBehaviour
     void Start()
     {
         Debug.Log("GameSceneCtrl start");
+        mainCamera = GameObject.Find("Main Camera");
+        if(mainCamera == null) Debug.LogWarning("maincamera refers null");
+
         // later, change to fightingMebers
         //allyDataList = gameManager.fightingMembers;
         /*
@@ -52,8 +57,10 @@ public class GameSceneCtrl : MonoBehaviour
             }
         }
         */
+
+
         if(gameManager.fightingMembers.Count == 0) Debug.Log("error");
-        //SpawnAllyCharacter();
+        SpawnEnemyCharacter();
         
         enemyList = new List<GameObject>(GameObject.FindGameObjectsWithTag("ENEMY"));
         allyDataList = gameManager.fightingMembers;
@@ -102,6 +109,29 @@ public class GameSceneCtrl : MonoBehaviour
 */
 
        StartCoroutine( SettingUnits());
+    }
+
+    void SpawnEnemyCharacter()
+    {
+        foreach(GameObject go in gameManager.levelSO.mainEnemies)
+        {
+            GameObject enemy = Instantiate(go);
+            enemy.transform.position = new Vector2(mainCamera.transform.position.x, mainCamera.transform.position.y);
+            //Instantiate(go, new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, 0), Quaternion.identity);
+            setEnemyStats(enemy);
+        }
+    }
+
+    void setEnemyStats(GameObject go)
+    {
+        CharacterStats goStats = go.GetComponent<CharacterStats>();
+        int hardness = gameManager.dungeonLevel;
+        //goStats.responseSpeed = goStats._data.responseSpeed * 
+        goStats.baseAttackDamage = goStats._data.baseAttackDamage * hardness;
+        goStats.baseAttackCooltime = goStats._data.baseAttackCooltime - (0.1f * hardness);
+        goStats.initHp = goStats._data.initHp * hardness;
+        goStats.defense = goStats._data.defense * hardness;
+        goStats.skillAttackDamage = goStats._data.skillAttackDamage * hardness;
     }
 
     void SetUI()
@@ -158,7 +188,8 @@ public class GameSceneCtrl : MonoBehaviour
         System.Random rnd = new System.Random();
         float ranX = (float) rnd.NextDouble() * 5;
         float ranY = (float) rnd.NextDouble() * 5;
-        _ally.transform.position = new Vector2(ranX, ranY);
+        // _ally.transform.position = new Vector2(ranX, ranY);
+        _ally.transform.position = new Vector2(ranX + 8, ranY + 8);
     }
 
     void ApplyEquipment(CharacterStats cs)

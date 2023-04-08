@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class GridControl : MonoBehaviour
 {
+  /*
     [SerializeField] Tilemap targetTilemap;
     [SerializeField] GridManager gridManager;
     Pathfinding pathfinding;
@@ -66,4 +67,5 @@ public class GridControl : MonoBehaviour
       }
     }
   }
+  */
 }

@@ -13,28 +13,16 @@ namespace MRidDemo
         public GameSceneCtrl gameSceneCtrl;
         public CharacterStats _stats;
         public CharacterSO _data;
+        
         // dictionary 로 나중에 바꾸기
-        List<Vector2> positionList = new List<Vector2>();
+        //List<Vector2> positionList = new List<Vector2>();
 
-        List<Vector2> positions = new List<Vector2>();
-        //Vector2 v = new Vector2(1, 0);
+        [SerializeField]
+        Pathfinding path;
 
-       //GameObject _UIManager;
-        //GameSceneUIManager uIManager;
-/*
-        #region SO data
-        public string characterName;
-        public float responseSpeed;
-        public int baseAttackDamage;
-        public int skillAttackDamage;
-        public float baseAttackCooltime;
-        public int initHp;
-        public int defense;
-        int speed;
-        public int attackDistance;
+        public List<Vector2> positions = new List<Vector2>();
 
-        #endregion
-*/
+        public List<Vector2> movePosList = new List<Vector2>();
 
         public GameManager gameManager;
 
@@ -43,7 +31,7 @@ namespace MRidDemo
         // bool canAttack = false;
         public bool swichOn = true;
         public bool isBaseAttackOn = true;
-        public Vector2 targetPos;
+        public Vector2 targetPos = new Vector2(-1, -1);
         public int mid;
         Vector2 startPos;
 
@@ -66,7 +54,10 @@ namespace MRidDemo
         public Queue<Vector2> q;
 
         public int currHp;
+        int maxX;
+        int maxY;
 
+        //public int t=0;
 
         public enum behaveState { STAY, ATTACK, MOVE, DIE };
         enum priorityState { };
@@ -93,9 +84,13 @@ namespace MRidDemo
             float rnd = UnityEngine.Random.Range(0, 1);
             for (int i = 0; i < 8; i++)
             {
-                positions.Add(new Vector2(Mathf.Sin(Mathf.PI * rnd + Mathf.PI * i / 4), Mathf.Cos(Mathf.PI * rnd + Mathf.PI * i / 4)));
+                positions.Add(new Vector2(Mathf.Cos(Mathf.PI * rnd + (Mathf.PI * i / 4.0f)), Mathf.Sin(Mathf.PI * rnd + (Mathf.PI * i / 4.0f))));
                 Debug.Log(positions[i]);
             }
+
+            maxX = GameObject.Find("Grid").GetComponent<GridMap>().length;
+            maxY = GameObject.Find("Grid").GetComponent<GridMap>().height;
+
 
             enemyList = gameSceneCtrl.enemyList;
             // 나중에 수정하기
@@ -106,6 +101,8 @@ namespace MRidDemo
 
             //Collider[] ce = CheckEnemy(this.transform.position);// 나중에 지우기
             //attackTarget = chooseTarget(ce);
+
+            path = GameObject.Find("GridManager").GetComponent<Pathfinding>();
         }
 
         IEnumerator Judge()
@@ -130,30 +127,35 @@ namespace MRidDemo
                 {
                     eventOn = false;
                     //Debug.Log("eventOff4");
-                    if (hit.collider)
+                    // later, modify this. 
+                    // it need to be renew when event happen, while forcemoveOn is true
+                    if (forceMoveOn == true) {}
+                    else if (hit.collider)
                     {
                         //Debug.Log("hit.collider.");
                         targetPos = FindEscapeLocation(transform.position);
+                        //movePosList.Clear();
+                        movePosList = path.FindPath((int)this.transform.position.x, (int)this.transform.position.y, (int)targetPos.x, (int)targetPos.y);
+                        // why?? later, modify..
+                        yield return new WaitForSeconds(0.1f);
                         StartCoroutine(ForceMove());
                         //Debug.Log("ForceMovingEnd");
                         //yield break; // ??
                     }
                 }
             }
-
-            if (hit.collider)
+            // it needs to be changed like up..
+            if (forceMoveOn == true) {}
+            else if (hit.collider)
             {
-                Debug.Log("hit.collider.");
+                Debug.Log(this.name + "hit.collider.");
                 targetPos = FindEscapeLocation(transform.position);
+                //movePosList.Clear();
+                movePosList = path.FindPath((int)this.transform.position.x, (int)this.transform.position.y, (int)targetPos.x, (int)targetPos.y);
+                // why?? later, modify..
+                yield return new WaitForSeconds(0.1f);
                 StartCoroutine(ForceMove());
-                //Debug.Log("ForceMovingEnd");
-                //yield break; // ??
             }
-            /*
-            if(eventOn)
-                yield return null;
-                Debug.Log("Plz Don't Printed_E");
-            */
             if (forceMoveOn)
             {
                 swichOn = true;
@@ -167,6 +169,7 @@ namespace MRidDemo
                 //attackTarget = ChooseTarget(ce);
 
                 // later modify to method.
+                Debug.Log(this.name + "normal judge start");
                 attackTarget = enemyList[0];
                 float distance = (attackTarget.transform.position
                         - this.transform.position).magnitude
@@ -174,36 +177,50 @@ namespace MRidDemo
                 // 혹은 ColliderDistance2D Distance(Collider2D colliderA, Collider2D colliderB);
                 //Debug.Log($"{distance}");
 
-                if (distance >= _stats.attackDistance-1&&distance <= _stats.attackDistance)
+                //if (distance >= _stats.attackDistance-1&&distance <= _stats.attackDistance)
+                if (distance <= _stats.attackDistance)
                 {
                     _state = behaveState.ATTACK;
                 }
                 else
                 {
                     //targetPos = (attackTarget.transform.position.normalized)*(distance-1.0f);
-                    targetPos = GetPositionToTarget(attackTarget);
-                    //targetPos = (attackTarget.transform.position);
+                    //targetPos = GetPositionToTarget(attackTarget);
                     _state = behaveState.MOVE;
-                    Debug.Log("MoveToAttack");
+                    //movePosList.Clear();
+                    movePosList = GetPositionToTarget(attackTarget);
+                    //targetPos = (attackTarget.transform.position);
+                    Debug.Log(this.name + " MoveToAttack");
                 }
 
             }
             swichOn = true;
         }
-
+/*
         private Vector2 GetPositionToTarget(GameObject attackTarget)
         {
             Vector3 targetPosition = attackTarget.transform.position - this.transform.position;
             float distanceToTarget = targetPosition.magnitude;
             float targetRadius = attackTarget.GetComponent<CircleCollider2D>().radius;
             //float rand = _stats.attackDistance * UnityEngine.Random.Range(0, 1) + targetRadius;
+            float rand = UnityEngine.Random.Range(0, 1);
             //Debug.Log(1 - (rand / distanceToTarget));
             Debug.DrawRay(this.transform.position, attackTarget.transform.position - (targetPosition.normalized * (targetRadius + _stats.attackDistance - 0.5f)  ), Color.green);
             //return transform.position + (targetPosition * (1 - (rand / distanceToTarget)));
-            return attackTarget.transform.position - (targetPosition.normalized * (targetRadius + _stats.attackDistance - 0.5f)  );
+            return attackTarget.transform.position - (targetPosition.normalized * (targetRadius + _stats.attackDistance - rand));//0.5f)  );
+        }
+*/
+        private List<Vector2> GetPositionToTarget(GameObject attackTarget)
+        {
+            float targetRadius = attackTarget.GetComponent<CircleCollider2D>().radius;
+            // later, modify distance beging changed randomly
+            float distance = targetRadius + _stats.attackDistance;
+        
+            return path.FindAtkPath((int)this.transform.position.x, (int)this.transform.position.y,
+                    (int)attackTarget.transform.position.x, (int)attackTarget.transform.position.y, distance);
         }
 
-        #region ATTACK_AND_SKILL
+#region ATTACK_AND_SKILL
         void Attack()
         {
             if (isSkillOn)
@@ -285,13 +302,17 @@ namespace MRidDemo
                 Debug.Log(hit.transform.name);
             }
         }
-
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _stats.attackDistance);
+    }
 
         void Update()
         {
             if(attackTarget != null && targetPos != null)
             {
-                Debug.DrawLine(this.transform.position, attackTarget.transform.position, Color.red);
+                //Debug.DrawLine(this.transform.position, attackTarget.transform.position, Color.red);
                 Debug.DrawLine(this.transform.position, targetPos, Color.yellow);
             }
             
@@ -313,13 +334,57 @@ namespace MRidDemo
                             Attack();
                             break;
                         case behaveState.MOVE:
-                            Move(targetPos);
+                        /*
+                            if (targetPos.x == -1)
+                            {
+                                _state = behaveState.STAY;
+                                break;
+                            }
+                        */
+                            StartCoroutine(Move());
+                            transform.Translate((targetPos - (Vector2)this.transform.position).normalized * Time.deltaTime * _stats.speed * 0.1f);
+                            //Move(targetPos);
+                            /*
                             Vector2 thisPos = transform.position;
                             if (thisPos == targetPos)
                                 _state = behaveState.ATTACK;
+                            */
                             break;
                     }
                 }
+            }
+        }
+        IEnumerator Move()
+        {
+            _state = behaveState.MOVE;
+
+            if(movePosList == null || movePosList.Count == 0)
+            {
+                targetPos = (Vector2)transform.position;
+                yield break;
+            }
+
+            int t=0;
+
+            targetPos = movePosList[t];
+
+            int x=0;
+            while (x++ <= 10)
+            {
+                if (Vector2.Distance(this.transform.position, targetPos) < 0.7f)
+                {
+                    t += 1;
+                    //movePosList.RemoveAt(0);
+                    if(movePosList.Count > t && t >= 0)
+                    {
+                        targetPos = movePosList[t];
+                    } else {
+                        _state = behaveState.ATTACK;
+                        t = 0;
+                        break;
+                    }
+                }
+                yield return new WaitForSeconds(0.1f);
             }
         }
 
@@ -333,7 +398,7 @@ namespace MRidDemo
             for (int i = 7; i >= 0; i--)
             {
                 //int n = rnd.Next(0, i + 1);
-                int n = UnityEngine.Random.Range(0, 8);
+                int n = UnityEngine.Random.Range(0, i+1);
                 l.Add(positions[n]);
 
                 //Debug.Log(n + " " + positions[n]);
@@ -350,15 +415,18 @@ namespace MRidDemo
             {
                 v = q.Dequeue();
                 Debug.Log(v);
-                RaycastHit2D hit = Physics2D.Raycast(v + (Vector2)this.transform.position, Vector2.zero);//??
+                RaycastHit2D hit = Physics2D.Raycast(v + (Vector2)this.transform.position, Vector2.zero);//, 0.1f, 1<<9);//??
                                                                       //Debug.Log($"{v.x}, {v.y}");
 
                 if (hit.collider == null)
                 {
+                    /*
                     if (Mathf.Abs(v.y) > 10)
                     { //Mathf.Abs(v.x) > 12 ||
                         Debug.Log("WALL");
                     }
+                    */
+                    if (v.x < 0 || v.y < 0 || v.x > maxX || v.y > maxY) {}
                     else
                     {
                         Debug.Log("HIT");
@@ -368,33 +436,11 @@ namespace MRidDemo
                 q.Enqueue(v + l[mid % _n]);
                 mid++;
             }
-            if (mid == 100) Debug.Log("mid is 100");
-            //Debug.Log("Don't move");
-            return Vector2.zero;
+            if (mid == 1000) Debug.LogWarning("mid is 1000");
+            Debug.LogWarning(this.name + "This not gonna happen!!");
+            return (Vector2)this.transform.position;
         }
 /*
-        public void changeHp(int chp)
-        {
-            if (chp < 0)
-            {
-                chp += defense;
-                if (chp < 0)
-                {
-                    currHp -= chp;
-                }
-            }
-            else
-            {
-                currHp += chp;
-                if (currHp < -1111110)
-                {  // 나중에 수정
-                    currHp = 0;
-                    Debug.Log("Ally_Dead");
-                    gameObject.SetActive(false);
-                }
-            }
-        }
-*/
         IEnumerator ForceMove()
         { // Vector2 pos
             forceMoveOn = true;
@@ -402,18 +448,50 @@ namespace MRidDemo
             while (Mathf.Abs(transform.position.x - targetPos.x) > 0.01f ||
                     Mathf.Abs(transform.position.y - targetPos.y) > 0.01f)
             {
-                /*
-                if(moveOrderOn){
-                    eventOn = true;
-                    break;
-                }
-                */
-                //Debug.Log("ForceMoveOn");
                 yield return new WaitForSeconds(0.2f);
             }
-            forceMoveOn = false;
-            //_state = beahveState.ATTACK;		
+            forceMoveOn = false;	
         }
+    */
+
+        IEnumerator ForceMove()
+        {
+            forceMoveOn = true;
+            StopCoroutine(Move());
+            _state = behaveState.MOVE;
+
+            if(movePosList == null || movePosList.Count == 0)
+            {
+                Debug.LogWarning("MovePosList is empty");
+                forceMoveOn = false;
+                yield break;
+            }
+
+            int t=0;
+
+            targetPos = movePosList[t];
+
+            int x=0;
+            while (x++ <= 10)
+            {
+                if (Vector2.Distance(this.transform.position, targetPos) < 0.7)
+                {
+                    t += 1;
+                    //movePosList.RemoveAt(0);
+                    if(movePosList.Count > t && t >= 0)
+                    {
+                        targetPos = movePosList[t];
+                    } else {
+                        t = 0;
+                        break;
+                    }
+                }
+                yield return new WaitForSeconds(0.1f);
+            }
+            forceMoveOn = false;
+        }
+
+
         public void AfterWeek()
         {
             _stats.fatigue -= 10;

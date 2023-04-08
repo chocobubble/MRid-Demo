@@ -11,11 +11,8 @@ GameObject:
   - component: {fileID: 6487494145041874550}
   - component: {fileID: 6487494145041874551}
   - component: {fileID: 6487494145041874549}
-  - component: {fileID: 6487494145041874548}
-  - component: {fileID: 6487494145041874547}
-  - component: {fileID: 8008111970753795416}
-  - component: {fileID: 436547672355110763}
   - component: {fileID: 5686581417595261599}
+  - component: {fileID: 6487494145041874548}
   m_Layer: 7
   m_Name: Warrior
   m_TagString: ALLY
@@ -31,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6487494145041874554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.24, y: -1.91, z: -0.1}
+  m_LocalPosition: {x: 0.24, y: -1.91, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -106,6 +103,9 @@ MonoBehaviour:
   gameSceneCtrl: {fileID: 0}
   _stats: {fileID: 0}
   _data: {fileID: 0}
+  path: {fileID: 0}
+  positions: []
+  movePosList: []
   gameManager: {fileID: 0}
   isSkillOn: 1
   swichOn: 1
@@ -120,6 +120,38 @@ MonoBehaviour:
   l: []
   currHp: 0
   _state: 0
+--- !u!114 &5686581417595261599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487494145041874554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e178cbecafdc437d9de3f4a5a720257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 2dea2d543c0cd4102bd3ded4036c1c2c, type: 2}
+  characterName: 
+  responseSpeed: 0
+  baseAttackDamage: 0
+  skillAttackDamage: 0
+  baseAttackCooltime: 0
+  initHp: 0
+  defense: 0
+  speed: 0
+  attackDistance: 0
+  characterClass: 0
+  weapon: {fileID: 0}
+  armor: {fileID: 0}
+  age: 0
+  xp: 0
+  characterLevel: 0
+  fatigue: 0
+  morale: 2
+  rarity: 0
+  currHp: 0
 --- !u!61 &6487494145041874548
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,78 +178,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3, y: 1.4}
   m_EdgeRadius: 0
---- !u!114 &6487494145041874547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6487494145041874554}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: cc6f640af26324a11899e4a012babd71, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 14d5a9493c40e4d7eb6fb153595e306c, type: 3}
-  m_SortingOrder: 0
---- !u!114 &8008111970753795416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6487494145041874554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a30248a9b9a641d08597073107b09c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!50 &436547672355110763
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6487494145041874554}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &5686581417595261599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6487494145041874554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e178cbecafdc437d9de3f4a5a720257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 2dea2d543c0cd4102bd3ded4036c1c2c, type: 2}
-  characterName: 
-  responseSpeed: 0
-  baseAttackDamage: 0
-  skillAttackDamage: 0
-  baseAttackCooltime: 0
-  initHp: 0
-  defense: 0
-  speed: 0
-  attackDistance: 0
-  characterClass: 0
-  weapon: {fileID: 0}
-  armor: {fileID: 0}
-  currHp: 0

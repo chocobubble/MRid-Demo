@@ -28,7 +28,8 @@ public class PrepareScreen : MenuScreen
 
     //[SerializeField]
     //List<CharacterSO> characterList = new List<CharacterSO>();
-    
+
+    DungeonScreen dungeonS;    
     public List<CharacterSO> fightingList = new List<CharacterSO>(4);
     public List<ClickableSlot> rosterSlotList = new List<ClickableSlot>();
     //[SerializeField]
@@ -47,6 +48,8 @@ public class PrepareScreen : MenuScreen
 
         backButton.clicked += BackToMainScreen;
         battleStartButton.clicked += StartBattleButtonOnClick;
+
+        dungeonS = GameObject.Find("DungeonScreen").GetComponent<DungeonScreen>();
 
         for (int i=1; i<5; i++) 
         {
@@ -94,7 +97,8 @@ public class PrepareScreen : MenuScreen
         {
             // Destroy trash SO files
             DestoryEquipmentSO();
-
+            gameManager.levelSO = gameManager.gameDataSO.dungeons[dungeonS.curDungeonNumber];
+            gameManager.dungeonLevel = dungeonS.curDungeonLevel;
             gameManager.fightingMembers = fightingList;
 /*
             foreach(GameObject go in gameManager.fightingMembers)
@@ -103,7 +107,8 @@ public class PrepareScreen : MenuScreen
             }
 */
             gameManager.isDungeonEnded = false;
-            SceneManager.LoadScene("Game");
+            //SceneManager.LoadScene("Game");
+            SceneManager.LoadScene(gameManager.levelSO.sceneName);
         }
     }
 
