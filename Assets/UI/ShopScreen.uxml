@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/CSS/MainScreen.uss?fileID=7433441132597879392&amp;guid=ce4be521e342443a283ab4d788dc402a&amp;type=3#MainScreen" />
-    <ui:VisualElement name="Container" style="background-image: url(&apos;project://database/Assets/Brackeys/2D%20Mega%20Pack/Backgrounds/SkyBackground.png?fileID=2800000&amp;guid=bb7547187a9980a4694d9a520186d028&amp;type=3#SkyBackground&apos;); width: auto; height: auto; flex-grow: 1; flex-direction: row;">
+    <ui:VisualElement name="Container" style="background-image: url(&apos;project://database/Assets/Brackeys/2D%20Mega%20Pack/Backgrounds/ArcadeGreyBackground.png?fileID=2800000&amp;guid=730c911464148054487bb3efd7ef0d07&amp;type=3#ArcadeGreyBackground&apos;); width: auto; height: auto; flex-grow: 1; flex-direction: row;">
         <ui:VisualElement name="LeftContainer" style="width: 70%;">
             <ui:VisualElement name="OwnerContainer" style="height: 60%; background-image: url(&apos;project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/d_stevejobsbuhoshechristmas.png?fileID=2800000&amp;guid=f008857e434b98b4eaabda1fd6af3059&amp;type=3#d_stevejobsbuhoshechristmas&apos;);" />
             <ui:VisualElement name="SellingItemContainer" style="flex-grow: 1; margin-left: 8px; margin-right: 8px; margin-top: 8px; margin-bottom: 8px; flex-wrap: wrap;">
@@ -15,11 +15,12 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="RightContainer" style="flex-grow: 1;">
-            <ui:VisualElement name="ItemInfoContainer" style="height: 70%;">
-                <ui:Label text="Label" display-tooltip-when-elided="true" name="ItemInfo" style="flex-grow: 1; justify-content: flex-start; align-items: stretch; -unity-text-align: middle-center;" />
+            <ui:VisualElement name="ItemInfoContainer" style="height: 70%; background-image: url(&apos;project://database/Assets/GUI_Parts/Gui_parts/Mini_frame0.png?fileID=2800000&amp;guid=4293f3f43e7a5524dbcb191b0ef09d9c&amp;type=3#Mini_frame0&apos;);">
+                <ui:Label text="STATS" display-tooltip-when-elided="true" style="-unity-text-align: middle-center; font-size: 20px; color: rgb(234, 243, 100); -unity-font-style: bold; margin-left: 5%; margin-right: 5%; margin-top: 10%; margin-bottom: 0; padding-left: 5%; padding-right: 5%; padding-top: 5%; padding-bottom: 5%; background-image: url(&apos;project://database/Assets/GUI_Parts/Gui_parts/Hp_frame.png?fileID=2800000&amp;guid=9d5f6625b0b035841a1153f7e5466a94&amp;type=3#Hp_frame&apos;);" />
+                <ui:Label display-tooltip-when-elided="true" name="ItemInfo" style="flex-grow: 1; justify-content: flex-start; align-items: stretch; -unity-text-align: middle-left; color: rgb(255, 255, 255); font-size: 20%; background-image: none; padding-left: 5%; padding-right: 5%; padding-top: 5%; padding-bottom: 5%;" />
             </ui:VisualElement>
             <ui:VisualElement name="PurchaseContainer" style="flex-grow: 1; align-items: center; justify-content: center;">
-                <ui:Button text="Purchase" display-tooltip-when-elided="true" name="PurchaseButton" />
+                <ui:Button text="Purchase" display-tooltip-when-elided="true" name="PurchaseButton" style="background-image: url(&apos;project://database/Assets/GUI_Parts/Gui_parts/button_ready_on.png?fileID=2800000&amp;guid=c9006339b2156b142934eac2999ef67c&amp;type=3#button_ready_on&apos;); color: rgb(217, 217, 217); height: 50%; width: 50%; font-size: 25px;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

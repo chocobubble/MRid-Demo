@@ -36,6 +36,7 @@ public class DungeonScreen : MenuScreen
     string containerID = "MainScreen";
     string leftSideID = "LeftSide";
     string middleSideID = "MiddleSide";
+    string buttonClickedID = "button-clicked";
 
     string backgroundFaderID = "background__fade--on";
     void Start()
@@ -76,6 +77,11 @@ public class DungeonScreen : MenuScreen
     {
         curDungeonNumber = _i;
         
+        foreach(DungeonSlot d in leftSide.Children())
+        {
+            if(d.ClassListContains(buttonClickedID)) d.RemoveFromClassList(buttonClickedID);
+        }
+        ((Button)cvt.target).AddToClassList(buttonClickedID);
         // SO files destroy??
         middleSide.Clear();
         for(int i = 1; i <= gameData.dungeonLevels[_i]; i++)
@@ -91,11 +97,18 @@ public class DungeonScreen : MenuScreen
     {
         curDungeonLevel = _i;
         DungeonSlot targetDungeon = cvt.target as DungeonSlot;
+        foreach(DungeonSlot d in middleSide.Children())
+        {
+            if(d.ClassListContains(buttonClickedID)) d.RemoveFromClassList(buttonClickedID);
+        }
+        targetDungeon.AddToClassList(buttonClickedID);
         ShowVisualElement(dungeonImage, true);
         dungeonImage.style.backgroundImage = new StyleBackground(gameData.dungeons[curDungeonNumber].dungeonSprite);
-
-        Debug.Log("curDungeonNumber = " + curDungeonNumber);
-        Debug.Log("curDungeonLevel = " +curDungeonLevel);
+        
+        //((Button)cvt.target).AddToClassList(buttonClickedID);
+        //Debug.Log("curDungeonNumber = " + curDungeonNumber);
+        //Debug.Log("curDungeonLevel = " +curDungeonLevel);
+        
 
         ShowVisualElement(startButton, true);
         startButton.clicked += StartButtonOnClick;

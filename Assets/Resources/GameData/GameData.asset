@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139d4624a056b46debc46036912d7887, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  dungeonNumber: 1
-  dungeonLevels: 0100000001000000010000000100000001000000
+  dungeonNumber: 5
+  dungeonLevels: 0100000005000000030000000500000003000000
   dungeons:
   - {fileID: 11400000, guid: cc5096cbaebe64e2081392b1243841a4, type: 2}
   - {fileID: 11400000, guid: 710ecd66c42cb4b4e8c6bc924cb2e254, type: 2}

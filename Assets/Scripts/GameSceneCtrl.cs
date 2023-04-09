@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using Cinemachine;
 
 namespace MRidDemo{
 public class GameSceneCtrl : MonoBehaviour
@@ -22,6 +23,8 @@ public class GameSceneCtrl : MonoBehaviour
 
     CharacterSO characterData; 
 
+    public CinemachineVirtualCamera cmcamera;
+
     //string warriorID = "paladin";
 
     public List<CharacterSO> allyDataList = new List<CharacterSO>();
@@ -33,6 +36,7 @@ public class GameSceneCtrl : MonoBehaviour
     UIDocument m_Document;
     [SerializeField]
     VisualElement m_Root;
+    Button followButton;
     public GameObject _ui;
     GameSceneUIManager gameSceneUIManager;
     List<VisualElement> healthBarlist = new List<VisualElement>();
@@ -91,6 +95,11 @@ public class GameSceneCtrl : MonoBehaviour
         if(m_Document == null) Debug.LogWarning("There is no m_Document");
         else m_Root = m_Document.rootVisualElement;
 
+        /// it's for testing,  later delete this
+        followButton = m_Root.Q<Button>("FollowButton");
+        followButton.clicked += Follow;
+        ///
+
         if(gameSceneUIManager == null)
         {
             gameSceneUIManager = _ui.GetComponent<GameSceneUIManager>();
@@ -108,9 +117,17 @@ public class GameSceneCtrl : MonoBehaviour
             healthBarlist[i].Q<VisualElement>("bar_Progress").style.width = Length.Percent(90); 
         }
 */
-
-       StartCoroutine( SettingUnits());
+        cmcamera = GameObject.Find("CMCamera").GetComponent<CinemachineVirtualCamera>();
+        cmcamera.Follow = enemyList[0].transform;
+        StartCoroutine( SettingUnits());
     }
+
+    /// its for testing, later, delete this
+    void Follow()
+    {
+        cmcamera.Follow = allyList[0].transform;
+    }
+    ///
 
     void SpawnEnemyCharacter()
     {
@@ -148,6 +165,7 @@ public class GameSceneCtrl : MonoBehaviour
             healthBarlist[i].Q<Label>("txt_Damage").text = $"0";
             healthBarlist[i].Q<Label>("txt_Percentage").text = $"100%";
             healthBarlist[i].Q<VisualElement>("bar_Progress").style.width = Length.Percent(90); 
+            healthBarlist[i].RegisterCallback<ClickEvent, Transform>(OnClick, allyList[i].transform);
         }
         if(allyList.Count == 0) Debug.Log("allyList is empty");
     }
@@ -365,6 +383,7 @@ public class GameSceneCtrl : MonoBehaviour
                 {
                     fm.GetComponent<AllyCtrl>().StopAllCoroutines();
                     fm.SetActive(false);
+                    fm.GetComponent<AllyCtrl>().AfterFightInBattle();
                     //yield return new WaitForSeconds(2);
                     //Debug.Log(fm.name);
                     //Destroy(fm);
@@ -379,6 +398,10 @@ public class GameSceneCtrl : MonoBehaviour
             yield return new WaitForSeconds(2);
             gameManager.BackToMainScreen();
             //SceneManager.LoadScene("MainScene");
+        }
+        void OnClick(ClickEvent cvt, Transform tf)
+        {
+            cmcamera.Follow = tf;
         }
 }
 }

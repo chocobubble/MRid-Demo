@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/UI/CSS/MainScreen.uss?fileID=7433441132597879392&amp;guid=ce4be521e342443a283ab4d788dc402a&amp;type=3#MainScreen" />
     <ui:VisualElement name="Container" style="flex-shrink: 1; flex-grow: 1; align-items: stretch; width: auto;">
         <ui:VisualElement name="Dungeon" style="height: 25%; flex-grow: 0;">
-            <ui:Button text="Dungeon" display-tooltip-when-elided="true" name="DungeonButton" class="main__button" style="flex-grow: 1;" />
+            <ui:Button text="Dungeon" display-tooltip-when-elided="true" name="DungeonButton" class="main__button" style="flex-grow: 1; height: 88px;" />
         </ui:VisualElement>
         <ui:VisualElement name="Shop" style="height: 25%; flex-grow: 0;">
             <ui:Button text="Shop" display-tooltip-when-elided="true" name="ShopButton" class="main__button" style="flex-grow: 1; white-space: normal;" />

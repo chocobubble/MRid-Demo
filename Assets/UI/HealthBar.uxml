@@ -11,4 +11,5 @@
             <ui:Instance template="ProgressBar" name="EnemyHpBar1" style="position: absolute; right: 0;" />
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:Button text="Button" display-tooltip-when-elided="true" name="FollowButton" style="position: absolute; right: 0; bottom: 0;" />
 </ui:UXML>

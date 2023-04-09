@@ -7,11 +7,19 @@
 }
 
 .main__button {
-    opacity: 0.2;
+    opacity: 1;
+    background-image: url('project://database/Assets/GUI_Parts/Gui_parts/button2.png?fileID=2800000&guid=711fb7a2b8e1ff54da609e52c3e729b8&type=3#button2');
+    -unity-font-style: bold;
+    color: rgb(204, 204, 204);
+    font-size: 100%;
 }
 
 .main__button--active {
     opacity: 1;
+    background-image: url('project://database/Assets/GUI_Parts/Gui_parts/button2_ready_off.png?fileID=2800000&guid=4b3d2095baccc2041b973b66b786b9d0&type=3#button2_ready_off');
+    -unity-font-style: bold;
+    font-size: 100%;
+    color: rgb(255, 240, 148);
 }
 
 .prepare-screen-roster {
@@ -205,6 +213,7 @@
     border-right-width: 3px;
     border-top-width: 3px;
     border-bottom-width: 3px;
+    background-image: none;
 }
 
 .color__border {
@@ -217,6 +226,9 @@
 .dungeon__container {
     margin-bottom: 10%;
     height: 15%;
+    background-image: url('project://database/Assets/GUI_Parts/Gui_parts/button2.png?fileID=2800000&guid=711fb7a2b8e1ff54da609e52c3e729b8&type=3#button2');
+    -unity-font-style: bold;
+    color: rgb(252, 255, 167);
 }
 
 .battle__startandback__button {
@@ -245,4 +257,8 @@
 
 .pubscreen__quest__button--accepted {
     opacity: 0.5;
+}
+
+.button-clicked {
+    background-image: url('project://database/Assets/GUI_Parts/Gui_parts/button2_ready_on.png?fileID=2800000&guid=6b8728d20b5d4c540b335c3789517218&type=3#button2_ready_on');
 }

@@ -16,13 +16,13 @@
 .bag__item__slot {
     flex-grow: 0;
     background-image: none;
-    width: 16%;
-    height: 30%;
+    width: 14%;
+    height: 26%;
 }
 
 .character__slot {
-    width: 14%;
-    height: 50%;
+    width: 13%;
+    height: 45%;
     border-left-width: 1px;
     border-right-width: 1px;
     border-top-width: 1px;
@@ -50,7 +50,7 @@
 }
 
 .bag__item__slot--equiped {
-    opacity: 0.5;
+    opacity: 0.26;
 }
 
 .stats__box {
@@ -60,13 +60,14 @@
     justify-content: space-between;
     padding-bottom: 1%;
     padding-right: 2%;
+    margin-bottom: 5%;
 }
 
 .character__slot--picked {
-    border-left-color: rgba(255, 253, 129, 255);
-    border-right-color: rgba(255, 253, 129, 255);
-    border-top-color: rgba(255, 253, 129, 255);
-    border-bottom-color: rgba(255, 253, 129, 255);
+    border-left-color: rgb(255, 253, 129);
+    border-right-color: rgb(255, 253, 129);
+    border-top-color: rgb(255, 253, 129);
+    border-bottom-color: rgb(255, 253, 129);
     border-left-width: 3px;
     border-right-width: 3px;
     border-top-width: 3px;
