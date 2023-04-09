@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8223b3dcf953c495b9310485d916120f, type: 3}
   m_Name: Level 3
   m_EditorClassIdentifier: 
-  dungeonName: FIRST
-  dungeonNumber: 0
+  dungeonName: THIRD
+  dungeonNumber: 3
   dungeonHardness: 0
   dungeonSprite: {fileID: 21300000, guid: a8166ea434d337349818825bff42d2f6, type: 3}
   sceneName: Game

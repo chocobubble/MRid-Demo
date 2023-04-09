@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   dungeonNumber: 1
-  dungeonLevels: 0100000002000000030000000400000005000000
+  dungeonLevels: 0100000001000000010000000100000001000000
   dungeons:
   - {fileID: 11400000, guid: cc5096cbaebe64e2081392b1243841a4, type: 2}
   - {fileID: 11400000, guid: 710ecd66c42cb4b4e8c6bc924cb2e254, type: 2}

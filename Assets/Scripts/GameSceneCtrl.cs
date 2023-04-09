@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 namespace MRidDemo{
 public class GameSceneCtrl : MonoBehaviour
@@ -143,7 +144,8 @@ public class GameSceneCtrl : MonoBehaviour
             healthBarlist[i].style.display = DisplayStyle.Flex;
             healthBarlist[i].name = allyList[i].GetComponent<CharacterStats>().characterName + "_HpBar";
             //Debug.Log($"{healthBarlist[i].name}");
-            healthBarlist[i].Q<Label>("txt_Loading").text = allyList[i].GetComponent<CharacterStats>().characterName;
+            healthBarlist[i].Q<Label>("txt_Name").text = allyList[i].GetComponent<CharacterStats>().characterName;
+            healthBarlist[i].Q<Label>("txt_Damage").text = $"0";
             healthBarlist[i].Q<Label>("txt_Percentage").text = $"100%";
             healthBarlist[i].Q<VisualElement>("bar_Progress").style.width = Length.Percent(90); 
         }
@@ -205,11 +207,11 @@ public class GameSceneCtrl : MonoBehaviour
         }
     }
 
-    public void CharacterHpChange(GameObject go, int chp, string name)
+    public void CharacterHpChange(GameObject attackedTarget, GameObject attacker, int chp, string name)
     {
         Debug.Log(name + " damaged " + chp);
         //AllyCtrl _allyCtrl = go.GetComponent<AllyCtrl>();
-        CharacterStats _stats = go.GetComponent<CharacterStats>();
+        CharacterStats _stats = attackedTarget.GetComponent<CharacterStats>();
         if (chp >= 0)
         {
             _stats.currHp += chp;
@@ -229,11 +231,11 @@ public class GameSceneCtrl : MonoBehaviour
                     _stats.currHp = 0;
                     Debug.Log($"{_stats.characterName} is dead");
                     //gameManager.JudgeEndOrNot();
-                    if (go.tag == "ENEMY")
+                    if (attackedTarget.tag == "ENEMY")
                     {
                         Debug.LogWarning("dead one is enemy");
-                        go.GetComponent<EnemyCtrl>().StopAllCoroutines();
-                        go.SetActive(false);
+                        attackedTarget.GetComponent<EnemyCtrl>().StopAllCoroutines();
+                        attackedTarget.SetActive(false);
                         //JudgeEndOrNot();
                         if(gameManager.isDungeonEnded == false) JudgeEndOrNot();
                         else Debug.LogWarning("whi.... wrong");
@@ -244,9 +246,18 @@ public class GameSceneCtrl : MonoBehaviour
                     //go.SetActive(false);
                     }
                 }
+                DamageCounterUpdate(attacker.GetComponent<CharacterStats>().characterName + "_HpBar", chp);
             }
         } 
         CharacterHpUIChange(_stats, _stats.currHp);
+    }
+    void DamageCounterUpdate(string n, int chp)
+    {
+        Label l = m_Root.Q<VisualElement>(n).Q<Label>("txt_Damage");
+        int dmg = System.Convert.ToInt32(l.text);
+        // chp is negative, so change it to positive number.
+        dmg -= chp;
+        l.text = dmg.ToString();
     }
 
     void CharacterHpUIChange(CharacterStats _stats, int _currHp)
@@ -301,6 +312,25 @@ public class GameSceneCtrl : MonoBehaviour
         }
         */
     }
+    public void AnimateLoadingBar(CharacterStats _stats)
+{
+    //float endWidth = m_LoadingProgressBar.parent.worldBound.width - 25;
+    VisualElement castingBar = m_Root.Q<VisualElement>(_stats.characterName + "_HpBar").Q<VisualElement>("castingbar_Progress");
+    float endWidth = castingBar.parent.worldBound.width;
+
+    //DOTween.To(() => 5, x=> m_LoadingPercentageText.text = $"{x}%", 
+    //    100, 5f).SetEase(Ease.Linear);
+    
+    DOTween.To(() => castingBar.worldBound.width, x =>
+        castingBar.style.width = x, endWidth, 1f).SetEase(Ease.Linear);
+    
+    StartCoroutine(WaitOneSecond(castingBar));
+}
+    IEnumerator WaitOneSecond(VisualElement castingBar)
+    {
+        yield return new WaitForSeconds(1f);
+        castingBar.style.width = 0;
+    }
 
     void JudgeEndOrNot()
     {
@@ -340,6 +370,11 @@ public class GameSceneCtrl : MonoBehaviour
                     //Destroy(fm);
                 }
             }
+            // check the highest level dungeon cleared.
+            gameManager.UpdateDungeonLevel();
+            // check the quest is cleared.
+            gameManager.CheckQuest();
+
             gameManager.fightingMembers = new List<CharacterSO>();
             yield return new WaitForSeconds(2);
             gameManager.BackToMainScreen();

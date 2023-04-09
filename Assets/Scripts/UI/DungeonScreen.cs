@@ -64,7 +64,7 @@ public class DungeonScreen : MenuScreen
     public void SetDungeonScreen()
     {
         leftSide.Clear();
-        for(int i=0; i<gameData.dungeonLevels.Count; i++)
+        for(int i=0; i<gameData.dungeonNumber; i++)
         {
             DungeonSlot _slot = new DungeonSlot((Number.FIRST+i).ToString());
             leftSide.Add(_slot);//DungeonSlot((Number.FIRST+i).ToString()));

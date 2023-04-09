@@ -130,7 +130,7 @@ public abstract class EnemyCtrl : MonoBehaviour
     	//_attackTarget?.hp -= 1;
         //_attackTarget.GetComponent<AllyCtrl>().changeHp(-1);
     	isBaseAttackOn = false;
-		gameSceneCtrl.CharacterHpChange(_attackTarget, -_stats.baseAttackDamage, this.name);
+		gameSceneCtrl.CharacterHpChange(_attackTarget, gameObject,-_stats.baseAttackDamage, this.name);
     	yield return new WaitForSeconds(_stats.baseAttackCooltime);
     	isBaseAttackOn = true;
     }

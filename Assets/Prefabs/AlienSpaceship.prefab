@@ -105,7 +105,7 @@ MonoBehaviour:
   baseAttackDamage: 1
   skillAttackDamage: 10
   baseAttackCooltime: 0.9
-  initHp: 10000
+  initHp: 1000
   defense: 0
   speed: 0
   attackDistance: 0

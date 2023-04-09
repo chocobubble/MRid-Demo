@@ -1,11 +1,24 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="Container" style="width: 350px;">
-        <ui:VisualElement name="Container_Header" style="flex-grow: 0; flex-direction: row; font-size: 25px; -unity-font: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=21eb2b688f5584467b7ee0a2a618ce3a&amp;type=3#NotInter-Regular&apos;);">
-            <ui:Label text="LOADING...." display-tooltip-when-elided="true" name="txt_Loading" style="flex-grow: 1; -unity-font-style: bold; color: rgb(0, 230, 255); flex-shrink: 0;" />
-            <ui:Label text="0%" display-tooltip-when-elided="true" name="txt_Percentage" style="-unity-font-style: italic; color: rgb(0, 230, 255);" />
+    <ui:VisualElement name="Container" style="flex-direction: row;">
+        <ui:VisualElement name="LeftContainer" style="flex-grow: 0; width: 100px;">
+            <ui:VisualElement name="LeftContainer_Header">
+                <ui:Label text="Character Name" display-tooltip-when-elided="true" name="txt_Name" style="flex-grow: 1; -unity-font-style: bold; color: rgb(0, 230, 255); flex-shrink: 0; -unity-text-align: upper-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="RightContainer_Sprite" style="background-image: url(&apos;project://database/Assets/JMO%20Assets/Cartoon%20FX%20(legacy)/Textures/CFX2_T_Smiley%20Happy.png?fileID=2800000&amp;guid=04968eedb3f06fb478bf733d8fb53727&amp;type=3#CFX2_T_Smiley Happy&apos;); flex-grow: 1; border-left-color: rgb(0, 230, 255); border-right-color: rgb(0, 230, 255); border-top-color: rgb(0, 230, 255); border-bottom-color: rgb(0, 230, 255); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px;" />
         </ui:VisualElement>
-        <ui:VisualElement name="Container_Bar" style="height: 75px; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-left-color: rgb(0, 230, 255); border-right-color: rgb(0, 230, 255); border-top-color: rgb(0, 230, 255); border-bottom-color: rgb(0, 230, 255);">
-            <ui:VisualElement name="bar_Progress" style="height: 100%; width: 0; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-color: rgba(0, 230, 255, 255);" />
+        <ui:VisualElement name="RightContainer" style="width: 350px;">
+            <ui:VisualElement name="Container_Header" style="flex-grow: 0; flex-direction: row; font-size: 25px; -unity-font: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=21eb2b688f5584467b7ee0a2a618ce3a&amp;type=3#NotInter-Regular&apos;);">
+                <ui:Label text="HP" display-tooltip-when-elided="true" name="txt_HP" style="color: rgb(0, 230, 255); -unity-font-style: bold; width: 25%; -unity-text-align: upper-center;" />
+                <ui:Label text="0%" display-tooltip-when-elided="true" name="txt_Percentage" style="-unity-font-style: italic; color: rgb(0, 230, 255); -unity-text-align: upper-left; max-width: none; width: 25%;" />
+                <ui:Label text="DMG" display-tooltip-when-elided="true" name="txt_DMG" style="-unity-font-style: bold; color: rgb(0, 230, 255); width: 25%; -unity-text-align: upper-right;" />
+                <ui:Label text="0" display-tooltip-when-elided="true" name="txt_Damage" style="flex-grow: 1; -unity-font-style: italic; color: rgb(0, 230, 255); flex-shrink: 0; -unity-text-align: upper-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Container_Bar" style="height: 75px; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-left-color: rgb(0, 230, 255); border-right-color: rgb(0, 230, 255); border-top-color: rgb(0, 230, 255); border-bottom-color: rgb(0, 230, 255);">
+                <ui:VisualElement name="bar_Progress" style="height: 100%; width: 26px; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-color: rgb(0, 230, 255);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Container_Bar" style="height: 10%; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-left-color: rgb(0, 230, 255); border-right-color: rgb(0, 230, 255); border-top-color: rgb(0, 230, 255); border-bottom-color: rgb(0, 230, 255);">
+                <ui:VisualElement name="castingbar_Progress" style="height: 100%; width: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-color: rgb(230, 255, 0);" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

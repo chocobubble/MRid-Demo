@@ -224,7 +224,7 @@
     font-size: 100%;
     -unity-font-style: bold;
     -unity-text-align: middle-center;
-    background-color: rgba(255, 251, 201, 255);
+    background-color: rgb(255, 251, 201);
 }
 
 .prepare-screen-roster-sprite {
@@ -238,4 +238,11 @@
     height: 70%;
     -unity-text-align: middle-left;
     padding-left: 5%;
+}
+
+.pubscreen__quest__button {
+}
+
+.pubscreen__quest__button--accepted {
+    opacity: 0.5;
 }

@@ -16,6 +16,7 @@ namespace MRidDemo
         public List<EquipmentSO> defaultItems = new List<EquipmentSO>();
         /// For Testing end
 
+        public QuestSO questSO;
         public GameDataSO gameDataSO;
         public bool Onskill = false;
         public bool isDungeonEnded = false;
@@ -88,8 +89,8 @@ namespace MRidDemo
                 GMEquipmentList.Add((EquipmentSO)AssetDatabase.LoadAssetAtPath(path, typeof(EquipmentSO)));
             }
             */
-
             Testing();
+            SetGameData();
 
         }
         void Testing()
@@ -124,6 +125,19 @@ namespace MRidDemo
         _equip.rarity = _default.rarity;
         _equip.points = _default.points;
         _equip.sprite = _default.sprite;
+    }
+
+    public void SetGameData()
+    {
+        gameDataSO.dungeonNumber= 1;
+        for (int i=0; i<gameDataSO.dungeonLevels.Count; i++)
+        {
+            gameDataSO.dungeonLevels[i] = 1;
+        }
+
+        questSO.questNumber = 1;
+        questSO.state = questState.NOTACCEPT;
+        
     }
         //public GameObject MaxHpMaxCurrHp(){}
         /*
@@ -219,6 +233,34 @@ namespace MRidDemo
         SceneManager.LoadScene("MainScene");
     }
 */
+    public void UpdateDungeonLevel()
+    {
+        if(gameDataSO.dungeonNumber == levelSO.dungeonNumber)
+        {
+            if(gameDataSO.dungeonLevels[gameDataSO.dungeonNumber - 1] == 5) return;
+
+            if(gameDataSO.dungeonLevels[gameDataSO.dungeonNumber - 1] == dungeonLevel)
+            {
+                gameDataSO.dungeonLevels[gameDataSO.dungeonNumber - 1] += 1;
+            }
+        }
+    }
+    public void CheckQuest()
+    { // check whether clear the highest number of the dungeons
+        if (questSO.state == questState.ACCEPT && gameDataSO.dungeonNumber == levelSO.dungeonNumber)
+        {
+            if(questSO != null)
+            {
+                //questSO.isSuccess = true;
+                questSO.state = questState.SUCCESS;
+            }
+            else
+            {
+                Debug.LogWarning("There is no quest");
+            }
+        }
+    }
+
     public void BackToMainScreen()
     {
         SceneManager.LoadScene("MainScene");

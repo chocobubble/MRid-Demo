@@ -10,10 +10,16 @@ public class PubScreen : MenuScreen
     public List<CharacterSO> characterSOs = new List<CharacterSO>();
     public List<GameObject> mercernaryList = new List<GameObject>();
     List<Button> mercernaryButtons = new List<Button>();
+
+    QuestSO quest;
+    Label questInfoLabel;
+    VisualElement questButtonContainer;
     //public List<CharacterSO> mercernaryList = new List<CharacterSO>();
     string mercernayButtonID = "MercernaryButton";
     string mercernaryButtonActiveID = "mercernary__container__active";
     string mercernaryButtonDeactiveID = "mercernary__container";
+    string questButtonUSS = "pubscreen__quest__button";
+    string questButtonBlurUSS = "pubscreen__quest__button--accepted";
 
     int currentMercernaryIndex = -1;
 
@@ -28,6 +34,11 @@ public class PubScreen : MenuScreen
         CreateMercernaryList();
 
         ShowMercernaryListInfo();
+
+        questInfoLabel = m_Screen.Q<Label>("Quest_Header_Label");
+        questButtonContainer = m_Screen.Q<VisualElement>("Quest_Button_Container");
+        quest = gameManager.questSO;
+        SetQuest();
     }
 
     void Hire()
@@ -131,5 +142,50 @@ public class PubScreen : MenuScreen
             mercernaryButtons[currentMercernaryIndex].AddToClassList(mercernaryButtonActiveID);
         }
 #endregion
-    }    
+
+
+        void SetQuest()
+        {
+            /// quest Info
+            questInfoLabel.text = $"Clear the {quest.questName} !!";
+
+            /// quest Button
+            questButtonContainer.Clear();
+            Button questButton = new Button();
+            questButton.AddToClassList(questButtonUSS);
+            switch(quest.state)
+            {
+                case questState.NOTACCEPT:
+                    questButton.text = "ACCEPT";
+                    //questButton.clicked += AcceptQuest;
+                    questButton.RegisterCallback<ClickEvent>(AcceptQuest);
+                    break;
+                case questState.SUCCESS:
+                    questButton.text = "COMPLETE";
+                    //questButton.clicked += CompleteQuest;
+                    questButton.RegisterCallback<ClickEvent>(CompleteQuest);
+                    break;
+                case questState.ACCEPT:
+                    questButton.text = "NOT CLEARED";
+                    questButton.AddToClassList(questButtonBlurUSS);
+                    break;
+            }
+            questButtonContainer.Add(questButton);
+        }  
+        void AcceptQuest(ClickEvent cvt)
+        {
+            Button targetButton = cvt.target as Button;
+            quest.state = questState.ACCEPT;
+            targetButton.AddToClassList(questButtonBlurUSS);
+        }
+
+        void CompleteQuest(ClickEvent cvt)
+        {
+            Button targetButton = cvt.target as Button;
+            targetButton.AddToClassList(questButtonBlurUSS);
+            quest.state = questState.NOTACCEPT;
+            quest.questNumber += 1;
+            gameManager.gameDataSO.dungeonNumber += 1;
+        }
+    } 
 }

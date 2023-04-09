@@ -104,7 +104,7 @@ public class ETCtrl : EnemyCtrl
 		foreach (var ally in allyList) {
 			if(Physics2D.IsTouching(skillGOs[0].GetComponent<Collider2D>(), ally.GetComponent<Collider2D>())){
 				//ally.GetComponent<AllyCtrl>().changeHp(-50); //TakeDamage(50); // takedamage 함수 구현하자
-				gameSceneCtrl.CharacterHpChange(ally, -50, this.name);
+				gameSceneCtrl.CharacterHpChange(ally, gameObject,-50, this.name);
 			}
 		}
 		skillGOs[0].gameObject.SetActive(false);
@@ -139,7 +139,7 @@ public class ETCtrl : EnemyCtrl
 		foreach (var ally in allyList) {
 			if(Physics2D.IsTouching(laser.GetComponent<Collider2D>(), ally.GetComponent<Collider2D>())){
 				//ally.GetComponent<AllyCtrl>().changeHp(-50); //TakeDamage(50); // takedamage 함수 구현하자
-				gameSceneCtrl.CharacterHpChange(ally, -50, this.name);
+				gameSceneCtrl.CharacterHpChange(ally, gameObject,-50, this.name);
 			}
 		}
 		laser.SetActive(false);
@@ -163,7 +163,7 @@ public class ETCtrl : EnemyCtrl
 		foreach(var ally in allyList) {
 			if(Physics2D.IsTouching(_circle.GetComponent<Collider2D>(), ally.GetComponent<Collider2D>())){
 				//ally.GetComponent<AllyCtrl>().changeHp(-50); //TakeDamage(50);
-				gameSceneCtrl.CharacterHpChange(ally, -50, this.name);
+				gameSceneCtrl.CharacterHpChange(ally, gameObject,-50, this.name);
 			}
 		}
 		_circle.SetActive(false);

@@ -276,6 +276,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7579b5649813449a0bdcf8d0c044b9a7, type: 2}
   - {fileID: 11400000, guid: c3a31327da3e14b76bec5a16ab53d1b7, type: 2}
   - {fileID: 11400000, guid: ef5aa167b89e4436c9a1500dfcd07248, type: 2}
+  questSO: {fileID: 11400000, guid: 60a83d53c682c4be9976415f0afd8b1a, type: 2}
   gameDataSO: {fileID: 11400000, guid: 5d8c969f6ce6b43fdb1f8ca313e4f2cf, type: 2}
   Onskill: 0
   isDungeonEnded: 0

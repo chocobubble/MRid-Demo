@@ -174,8 +174,9 @@ public class Pathfinding : MonoBehaviour
       if (currentNode.hValue < distance)
       {
         // we finished searching ours path
-        Debug.Log("retracePath from " + currentNode.xPos + ", " + currentNode.yPos);
-        return RetracePath(startNode, currentNode);
+
+        RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(currentNode.xPos, currentNode.yPos), Vector2.zero, 0, 1<<6);
+        if (hit2.collider == null) return RetracePath(startNode, currentNode);
       }
 
       List<PathNode> neighbourNodes = new List<PathNode>();

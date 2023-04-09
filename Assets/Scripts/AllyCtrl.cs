@@ -184,11 +184,13 @@ namespace MRidDemo
                 }
                 else
                 {
+                    StopCoroutine(Move());
                     //targetPos = (attackTarget.transform.position.normalized)*(distance-1.0f);
                     //targetPos = GetPositionToTarget(attackTarget);
                     _state = behaveState.MOVE;
                     //movePosList.Clear();
                     movePosList = GetPositionToTarget(attackTarget);
+                    StartCoroutine(Move());
                     //targetPos = (attackTarget.transform.position);
                     Debug.Log(this.name + " MoveToAttack");
                 }
@@ -278,7 +280,7 @@ namespace MRidDemo
             }
             else
             {
-                gameSceneCtrl.CharacterHpChange(attackTarget, -_stats.baseAttackDamage, this.name);
+                gameSceneCtrl.CharacterHpChange(attackTarget, gameObject, -_stats.baseAttackDamage, this.name);
             }
             yield return new WaitForSeconds(_stats.baseAttackCooltime);
             isBaseAttackOn = true;
@@ -341,7 +343,7 @@ namespace MRidDemo
                                 break;
                             }
                         */
-                            StartCoroutine(Move());
+                            //
                             transform.Translate((targetPos - (Vector2)this.transform.position).normalized * Time.deltaTime * _stats.speed * 0.1f);
                             //Move(targetPos);
                             /*
@@ -360,7 +362,7 @@ namespace MRidDemo
 
             if(movePosList == null || movePosList.Count == 0)
             {
-                targetPos = (Vector2)transform.position;
+                targetPos = (Vector2)attackTarget.transform.position;
                 yield break;
             }
 
@@ -371,7 +373,7 @@ namespace MRidDemo
             int x=0;
             while (x++ <= 10)
             {
-                if (Vector2.Distance(this.transform.position, targetPos) < 0.7f)
+                if (Vector2.Distance(this.transform.position, targetPos) < 0.4f)
                 {
                     t += 1;
                     //movePosList.RemoveAt(0);
@@ -379,6 +381,7 @@ namespace MRidDemo
                     {
                         targetPos = movePosList[t];
                     } else {
+                        Debug.Log(this.name + "moveing is done");
                         _state = behaveState.ATTACK;
                         t = 0;
                         break;
@@ -429,8 +432,12 @@ namespace MRidDemo
                     if (v.x < 0 || v.y < 0 || v.x > maxX || v.y > maxY) {}
                     else
                     {
+                        RaycastHit2D hit2 = Physics2D.Raycast(v + (Vector2)this.transform.position, Vector2.zero, 0.1f, 1<<9);
+                        if(hit2.collider != null) {}
+                        else{
                         Debug.Log("HIT");
                         return v + (Vector2)this.transform.position;// + (l[mid % _n] * 0.5f); // 수정하기
+                        }
                     }
                 }
                 q.Enqueue(v + l[mid % _n]);
@@ -474,7 +481,7 @@ namespace MRidDemo
             int x=0;
             while (x++ <= 10)
             {
-                if (Vector2.Distance(this.transform.position, targetPos) < 0.7)
+                if (Vector2.Distance(this.transform.position, targetPos) < 0.4f)
                 {
                     t += 1;
                     //movePosList.RemoveAt(0);
@@ -482,6 +489,7 @@ namespace MRidDemo
                     {
                         targetPos = movePosList[t];
                     } else {
+                        Debug.Log(this.name + "force moving is doen");
                         t = 0;
                         break;
                     }
@@ -521,6 +529,7 @@ namespace MRidDemo
     {   
         isSkillOn = false;
         canAct = false;
+        gameSceneCtrl.AnimateLoadingBar(_stats);
         yield return new WaitForSeconds(1);
         canAct = true;
         target.GetComponent<EnemyCtrl>()._attackTarget = caster;
@@ -533,9 +542,10 @@ namespace MRidDemo
     {
         isSkillOn = false;
         canAct = false;
+        gameSceneCtrl.AnimateLoadingBar(_stats);
         yield return new WaitForSeconds(1);
         canAct = true;
-        gameSceneCtrl.CharacterHpChange(target, -_stats.skillAttackDamage, this.name);
+        gameSceneCtrl.CharacterHpChange(target, gameObject, -_stats.skillAttackDamage, this.name);
         yield return new WaitForSeconds(10);
         isSkillOn = true;
     }
@@ -557,9 +567,10 @@ namespace MRidDemo
                 minHp = curHpProportion;
             }
         }
+        gameSceneCtrl.AnimateLoadingBar(_stats);
         yield return new WaitForSeconds(1);
         canAct = true;
-        gameSceneCtrl.CharacterHpChange(healTarget, _stats.skillAttackDamage, this.name);
+        gameSceneCtrl.CharacterHpChange(healTarget, gameObject,_stats.skillAttackDamage, this.name);
         Debug.Log($"Healed '{healTarget}' !!");
         yield return new WaitForSeconds(10);
         isSkillOn = true;

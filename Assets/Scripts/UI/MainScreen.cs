@@ -31,8 +31,12 @@ public class MainScreen : MenuScreen
     string moneyContainerID = "MoneyContainer";
     string dateLabelID = "DateLabel";
 
+    protected override void Awake()
+    { // called when the scene loaded
+        base.Awake();
+    }
     void Start()
-    {
+    { // called when the scene loaded
         // gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         dateContainer = m_Root.Q<VisualElement>(dateContainerID);
         moneyContainer = m_Root.Q<VisualElement>(moneyContainerID);
@@ -153,6 +157,7 @@ public class MainScreen : MenuScreen
             $"{year}Year / {month}Month / {week}Week";
         moneyContainer.Q<Label>(moneyLabelID).text = $"{gameManager.money}";
     }
+
 }
 
 }
