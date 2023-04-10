@@ -175,7 +175,8 @@ public class PrepareScreen : MenuScreen
             //Debug.Log("characteridx = " + characterIdx + " / listsize = " + gameManager.GMcharacterList.Count);//characterList.Count);
             fightingList[emptyIdx] = gameManager.GMcharacterList[characterIdx];
             //int curemptyIdx = emptyIdx + 1;
-            fightingListButtons[emptyIdx].text = fightingList[emptyIdx].characterName;
+            fightingListButtons[emptyIdx].Q<VisualElement>("FightListImage").style.backgroundImage = new StyleBackground(fightingList[emptyIdx].visual);
+            fightingListButtons[emptyIdx].Q<Label>("FightListName").text = fightingList[emptyIdx].characterName;
             fightingListButtons[emptyIdx].name = characterIdx.ToString();
             
             //fightingListButtons[emptyIdx].RegisterCallback<ClickEvent, ClickableSlot>(returnToRoster, cs);

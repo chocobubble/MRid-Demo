@@ -1390,6 +1390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultItems: []
+  questSO: {fileID: 0}
   gameDataSO: {fileID: 0}
   Onskill: 0
   isDungeonEnded: 0
@@ -1813,6 +1814,7 @@ MonoBehaviour:
   warrior: {fileID: 6487494145041874554, guid: b93b9185b3ed54481974e9e15f0376eb, type: 3}
   healer: {fileID: 6487494145041874554, guid: 0d2cf184bd3d9477f92c1ac9e852fb59, type: 3}
   hunter: {fileID: 6487494145041874554, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+  cmcamera: {fileID: 0}
   allyDataList: []
   allyList: []
   enemyList: []
@@ -1833,3 +1835,77 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2014875911
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6487494145041874548, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487494145041874548, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487494145041874548, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487494145041874548, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_Offset.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487494145041874550, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487494145041874550, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487494145041874550, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487494145041874550, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487494145041874550, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487494145041874550, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487494145041874550, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487494145041874550, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487494145041874550, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487494145041874550, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487494145041874550, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487494145041874554, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
+      propertyPath: m_Name
+      value: Hunter
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 366073990118c47f0ad91bba78dbae24, type: 3}

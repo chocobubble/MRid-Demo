@@ -155,9 +155,10 @@ public class ETCtrl : EnemyCtrl
     	// 시전
     	isThirdSkillOn = false;
 		GameObject _circle = skillGOs[2].gameObject;//
+		int rnd = Random.Range(0, 4);
 		int _x = Random.Range(-4, 4);
 		int _y = Random.Range(-4, 4);
-		_circle.transform.position = new Vector2(_x,_y);
+		_circle.transform.position = (Vector2)allyList[rnd].transform.position + (new Vector2(_x,_y));
 		_circle.SetActive(true);
 		yield return new WaitForSeconds(3);
 		foreach(var ally in allyList) {

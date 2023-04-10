@@ -5,11 +5,11 @@
             <ui:Button text="First Dungeon" display-tooltip-when-elided="true" name="BaseButton" class="dungeon__container button-clicked" />
             <ui:Button text="First Dungeon" display-tooltip-when-elided="true" name="BaseButton" class="dungeon__container" />
             <ui:Button text="First Dungeon" display-tooltip-when-elided="true" name="BaseButton" class="dungeon__container" />
+            <ui:Button text="First Dungeon" display-tooltip-when-elided="true" name="BaseButton" class="dungeon__container" />
         </ui:VisualElement>
         <ui:VisualElement name="MiddleSide" style="width: 25%; justify-content: flex-start; padding-top: 5%; margin-left: 5%; padding-left: 5%;">
             <ui:Button text="Level 1" display-tooltip-when-elided="true" name="Level01" style="display: none;" />
             <ui:Button text="Level 1" display-tooltip-when-elided="true" name="Level01" style="display: none;" />
-            <ui:Button text="First Dungeon" display-tooltip-when-elided="true" name="BaseButton" class="dungeon__container" />
         </ui:VisualElement>
         <ui:VisualElement name="DungeonImage" style="flex-grow: 1; margin-top: 0; margin-bottom: 0; margin-left: 0; margin-right: 0; justify-content: flex-start; align-items: flex-start; display: flex; padding-left: 5%; padding-right: 5%; padding-top: 5%; padding-bottom: 5%;">
             <ui:VisualElement name="ImageBox" style="flex-grow: 0; width: 50%; display: flex; height: 50%;">

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 using UnityEngine.UIElements;
 namespace MRidDemo{
@@ -19,6 +20,7 @@ public class MainScreen : MenuScreen
     const string k_ButtonActiveClass = "main__button--active";
     const string k_ButtonInactiveClass = "main__button";
 
+    Button m_BackHomeButton;
     Button m_DungeonScreenButton;
     Button m_ShopScreenButton;
     Button m_PubScreenButton;
@@ -57,13 +59,16 @@ public class MainScreen : MenuScreen
         m_ShopScreenButton = m_Root.Q<Button>(k_ShopScreenButton);
         m_PubScreenButton = m_Root.Q<Button>(k_PubScreenButton);
         m_InventoryScreenButton = m_Root.Q<Button>(k_InventoryScreenButton);
+        m_BackHomeButton = m_Root.Q<Button>("BackHomeButton");
 
+/*
         if (m_DungeonScreenButton == null)
         {
             Debug.Log("NO dungeonscreen button");
         } else {
             Debug.Log("dungeonscreen is on");
         }
+*/
     }
 
     protected override void RegisterButtonCallbacks()
@@ -76,6 +81,7 @@ public class MainScreen : MenuScreen
         m_ShopScreenButton?.RegisterCallback<ClickEvent>(ShowShopScreen);
         m_PubScreenButton?.RegisterCallback<ClickEvent>(ShowPubScreen);
         m_InventoryScreenButton?.RegisterCallback<ClickEvent>(ShowInventoryScreen);
+        m_BackHomeButton.clicked += BackHomeScreen;
     }
 
     void ShowDungeonScreen()
@@ -106,6 +112,10 @@ public class MainScreen : MenuScreen
         
         ActivateButton(m_InventoryScreenButton);
         m_UIManager?.ShowInventoryScreen();
+    }
+    void BackHomeScreen()
+    {
+        SceneManager.LoadScene("HomeScene");
     }
 
     void ActivateButton(Button screenButton)

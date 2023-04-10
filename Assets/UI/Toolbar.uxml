@@ -17,7 +17,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="BackButton" style="flex-grow: 0; width: auto; align-items: center; justify-content: center;">
-            <ui:Button text="Back" display-tooltip-when-elided="true" style="background-color: rgba(188, 188, 188, 0); -unity-font-style: bold; color: rgb(116, 253, 141);" />
+            <ui:Button text="Back" display-tooltip-when-elided="true" name="BackHomeButton" style="background-color: rgba(188, 188, 188, 0); -unity-font-style: bold; color: rgb(116, 253, 141);" />
         </ui:VisualElement>
         <ui:VisualElement name="SettingsButton" style="background-image: none; width: 10%; height: 100%; justify-content: flex-start; flex-grow: 0; padding-right: 3%;">
             <ui:Button display-tooltip-when-elided="true" style="background-image: url(&apos;project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/buttonssosigninunity.png?fileID=2800000&amp;guid=f9161c6c9e06dc445ada3ee16d991f90&amp;type=3#buttonssosigninunity&apos;);" />

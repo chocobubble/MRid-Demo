@@ -1,15 +1,15 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="ProgressBar" src="project://database/Assets/UI/ProgressBar.uxml?fileID=9197481963319205126&amp;guid=14d5a9493c40e4d7eb6fb153595e306c&amp;type=3#ProgressBar" />
+    <ui:Template name="EnemyHpBar" src="project://database/Assets/UI/EnemyHpBar.uxml?fileID=9197481963319205126&amp;guid=795fdf44aa923457996c0e0f77e84ffb&amp;type=3#EnemyHpBar" />
     <ui:VisualElement name="Container" style="flex-direction: row; flex-grow: 1;">
-        <ui:VisualElement name="AllyHpBarContainer" style="flex-grow: 1;">
+        <ui:VisualElement name="AllyHpBarContainer" style="flex-grow: 0; width: 20%; height: auto; justify-content: flex-start;">
             <ui:Instance template="ProgressBar" name="HpBar1" style="display: none;" />
             <ui:Instance template="ProgressBar" name="HpBar2" style="display: none;" />
             <ui:Instance template="ProgressBar" name="HpBar3" style="display: none;" />
             <ui:Instance template="ProgressBar" name="HpBar4" style="display: none;" />
         </ui:VisualElement>
-        <ui:VisualElement name="EnemyHpBarContainer" style="flex-grow: 1;">
-            <ui:Instance template="ProgressBar" name="EnemyHpBar1" style="position: absolute; right: 0;" />
+        <ui:VisualElement name="EnemyHpBarContainer" style="flex-grow: 0; position: absolute; right: 0; min-width: auto; min-height: auto; align-items: flex-end;">
+            <ui:Instance template="EnemyHpBar" name="EnemyHpBar1" />
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:Button text="Button" display-tooltip-when-elided="true" name="FollowButton" style="position: absolute; right: 0; bottom: 0;" />
 </ui:UXML>

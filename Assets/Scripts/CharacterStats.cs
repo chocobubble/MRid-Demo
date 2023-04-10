@@ -3,14 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MRidDemo{
-public enum Morale
-{
-    VERYBAD,
-    BAD,
-    NORMAL,
-    GOOD,
-    VERYGOOD
-};
 public class CharacterStats : MonoBehaviour
 {
     public CharacterSO _data;
@@ -58,7 +50,13 @@ public class CharacterStats : MonoBehaviour
             weapon = _data.defaultWeapon;
             armor = _data.defaultHelmet;
 
+            // later..
+            morale = _data.morale;
+            fatigue = _data.fatigue;
+
             currHp = initHp;
+
+
 
             // later add to SO
             age = 150;

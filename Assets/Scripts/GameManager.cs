@@ -259,24 +259,56 @@ namespace MRidDemo
 
     public void BackToMainScreen()
     {
+        AfterFightInBattle();
+        NextWeek();
+        fightingMembers = new List<CharacterSO>();
         SceneManager.LoadScene("MainScene");
-        GetOld();
         //GameObject.Find("MainScreen").GetComponent<MainScreen>().SettingDate();
         Debug.Log("new day begins");
     }
 
 
-        void GetOld()
+        void AfterFightInBattle()
         {
-            foreach (CharacterSO character in GMcharacterList)
+            foreach (CharacterSO character in fightingMembers)
             {
-                if(character != null){
-                character.age += 1;
-                //GameObject.Find("MainScreen").GetComponent<MainScreen>().SettingDate();
-                //Debug.Log("new day begins");
+                if(character != null)
+                {
+                    IncreaseStats(character);
+                    //GetOlder(character);
+                    //GameObject.Find("MainScreen").GetComponent<MainScreen>().SettingDate();
+                    //Debug.Log("new day begins");
                 }
+                else Debug.Log("There is no character!!");
             }
+        }
+        public void IncreaseStats(CharacterSO characterSO)
+        {
+                    if (isFailed == true)
+                    {
+                        characterSO.fatigue += 40;
+                        characterSO.morale -= 2;
+                        if((int)characterSO.morale < -2) characterSO.morale = Morale.VERYBAD;
+                    }
+                    else
+                    {
+                        characterSO.fatigue += 25;
+                        characterSO.morale += 1;
+                        if((int)characterSO.morale > 2) characterSO.morale = Morale.VERYGOOD;
+                    }
+        }
+        void GetOlder(CharacterSO characterSO)
+        {
+            characterSO.age += 1;
+        }
+        void NextWeek()
+        {
             date += 1;
+            foreach(CharacterSO c in GMcharacterList)
+            {
+                GetOlder(c);
+                c.fatigue -= 10;
+            }
         }
     }
 }

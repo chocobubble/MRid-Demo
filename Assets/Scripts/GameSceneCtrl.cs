@@ -95,10 +95,12 @@ public class GameSceneCtrl : MonoBehaviour
         if(m_Document == null) Debug.LogWarning("There is no m_Document");
         else m_Root = m_Document.rootVisualElement;
 
+        /*
         /// it's for testing,  later delete this
         followButton = m_Root.Q<Button>("FollowButton");
         followButton.clicked += Follow;
         ///
+        */
 
         if(gameSceneUIManager == null)
         {
@@ -158,13 +160,15 @@ public class GameSceneCtrl : MonoBehaviour
         for(int i=0; i<allyList.Count; i++) 
         {
             Debug.Log(healthBarlist[i] + " setting");
+            CharacterStats _stats = allyList[i].GetComponent<CharacterStats>();
             healthBarlist[i].style.display = DisplayStyle.Flex;
-            healthBarlist[i].name = allyList[i].GetComponent<CharacterStats>().characterName + "_HpBar";
+            healthBarlist[i].name = _stats.characterName + "_HpBar";
             //Debug.Log($"{healthBarlist[i].name}");
-            healthBarlist[i].Q<Label>("txt_Name").text = allyList[i].GetComponent<CharacterStats>().characterName;
+            healthBarlist[i].Q<Label>("txt_Name").text = _stats.characterName;
             healthBarlist[i].Q<Label>("txt_Damage").text = $"0";
             healthBarlist[i].Q<Label>("txt_Percentage").text = $"100%";
             healthBarlist[i].Q<VisualElement>("bar_Progress").style.width = Length.Percent(90); 
+            healthBarlist[i].Q<VisualElement>("RightContainer_Sprite").style.backgroundImage = new StyleBackground(_stats._data.visual);
             healthBarlist[i].RegisterCallback<ClickEvent, Transform>(OnClick, allyList[i].transform);
         }
         if(allyList.Count == 0) Debug.Log("allyList is empty");
@@ -365,6 +369,8 @@ public class GameSceneCtrl : MonoBehaviour
             Debug.Log("All enemies are dead");
             if (SceneManager.GetActiveScene().name == "Game")
             {
+                // later, add fail when allies all dead
+                gameManager.isFailed = false;
                 gameManager.isDungeonEnded = true;
                 // later, add all stop and .. wait for seconds
                 StartCoroutine(EndDungeon());
@@ -383,7 +389,7 @@ public class GameSceneCtrl : MonoBehaviour
                 {
                     fm.GetComponent<AllyCtrl>().StopAllCoroutines();
                     fm.SetActive(false);
-                    fm.GetComponent<AllyCtrl>().AfterFightInBattle();
+                    //fm.GetComponent<AllyCtrl>().AfterFightInBattle();
                     //yield return new WaitForSeconds(2);
                     //Debug.Log(fm.name);
                     //Destroy(fm);
@@ -394,7 +400,7 @@ public class GameSceneCtrl : MonoBehaviour
             // check the quest is cleared.
             gameManager.CheckQuest();
 
-            gameManager.fightingMembers = new List<CharacterSO>();
+            //gameManager.fightingMembers = new List<CharacterSO>();
             yield return new WaitForSeconds(2);
             gameManager.BackToMainScreen();
             //SceneManager.LoadScene("MainScene");

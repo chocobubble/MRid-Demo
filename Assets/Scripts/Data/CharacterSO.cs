@@ -27,6 +27,14 @@ namespace MRidDemo
         Magic,
         Ranged
     }
+    public enum Morale
+    {
+    VERYBAD,
+    BAD,
+    NORMAL,
+    GOOD,
+    VERYGOOD
+    };
 
     // baseline data for a specific character
 
@@ -48,9 +56,13 @@ namespace MRidDemo
         public Rarity rarity;
         public AttackType attackType;
         public float basePointsCriticalHit;
-        public int age = 0;
+        public int age = 1;
         public int xp = 0;
         public int characterLevel = 1;
+        
+        [Range(0, 100)]
+        public int fatigue = 0; 
+        public Morale morale = Morale.NORMAL;
 
         // skill1 unlocked at level 0, skill2 unlocked at level 3, skill3 unlocked at level 6
         public SkillSO skill1;

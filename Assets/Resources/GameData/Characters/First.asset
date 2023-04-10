@@ -22,14 +22,16 @@ MonoBehaviour:
   attackDistance: 1
   characterName: First
   characterVisualsPrefab: {fileID: 6487494145041874554, guid: b93b9185b3ed54481974e9e15f0376eb, type: 3}
-  visual: {fileID: 21300000, guid: 4b5c3887b0bad8548a4414947f05a7ba, type: 3}
+  visual: {fileID: 21300000, guid: 112c48ad71ab8dc41a8d8b8a42b768d1, type: 3}
   characterClass: 0
   rarity: 0
   attackType: 0
   basePointsCriticalHit: 0
-  age: 0
+  age: 1
   xp: 74
   characterLevel: 6
+  fatigue: 0
+  morale: 2
   skill1: {fileID: 0}
   defaultWeapon: {fileID: 0}
   defaultHelmet: {fileID: 0}

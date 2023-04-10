@@ -111,7 +111,7 @@ namespace MRidDemo
             yield return new WaitForSeconds(_stats.responseSpeed);
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position,
-                    Vector2.zero, 1.0f, (1 << 6));
+                    Vector2.zero, 1.0f,((1 << 9)+ (1 << 6) ));
             if (eventOn)
             {
                 Debug.Log("eventOn");
@@ -504,7 +504,7 @@ namespace MRidDemo
         {
             _stats.fatigue -= 10;
         }
-
+/*
         public void AfterFightInBattle()
         {
             if (gameManager.isFailed == true)
@@ -520,6 +520,7 @@ namespace MRidDemo
                 if((int)_stats.morale > 2) _stats.morale = Morale.VERYGOOD;
             }
         }
+*/
 
 
 

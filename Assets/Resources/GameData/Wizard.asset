@@ -22,7 +22,7 @@ MonoBehaviour:
   attackDistance: 5
   characterName: Wizard
   characterVisualsPrefab: {fileID: 6487494145041874554, guid: 0d2cf184bd3d9477f92c1ac9e852fb59, type: 3}
-  visual: {fileID: 21300000, guid: c16d3e5511c9e1341b0bd70dcb31fb81, type: 3}
+  visual: {fileID: 21300000, guid: 89e0bd45172bf5c4e93a560e83a0df54, type: 3}
   characterClass: 1
   rarity: 0
   attackType: 0
@@ -30,6 +30,8 @@ MonoBehaviour:
   age: 0
   xp: 0
   characterLevel: 0
+  fatigue: 0
+  morale: 2
   skill1: {fileID: 0}
   defaultWeapon: {fileID: 0}
   defaultHelmet: {fileID: 0}
