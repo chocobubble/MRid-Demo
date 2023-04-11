@@ -130,7 +130,7 @@ namespace MRidDemo
         {
             gameDataSO.dungeonLevels[i] = 1;
         }
-
+        questSO.questName = "FIRST Dungeon";
         questSO.questNumber = 1;
         questSO.state = questState.NOTACCEPT;
         

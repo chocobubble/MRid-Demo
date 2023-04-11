@@ -8,20 +8,20 @@ public class PubScreen : MenuScreen
 {
     public List<GameObject> prefabList = new List<GameObject>();
     public List<CharacterSO> characterSOs = new List<CharacterSO>();
-    public List<GameObject> mercernaryList = new List<GameObject>();
-    List<Button> mercernaryButtons = new List<Button>();
+    public List<GameObject> mercenaryList = new List<GameObject>();
+    List<Button> mercenaryButtons = new List<Button>();
 
     QuestSO quest;
     Label questInfoLabel;
     VisualElement questButtonContainer;
-    //public List<CharacterSO> mercernaryList = new List<CharacterSO>();
-    string mercernayButtonID = "MercernaryButton";
-    string mercernaryButtonActiveID = "mercernary__container__active";
-    string mercernaryButtonDeactiveID = "mercernary__container";
+    //public List<CharacterSO> mercenaryList = new List<CharacterSO>();
+    string mercernayButtonID = "MercenaryButton";
+    string mercenaryButtonActiveID = "mercenary__container__active";
+    string mercenaryButtonDeactiveID = "mercenary__container";
     string questButtonUSS = "pubscreen__quest__button";
     string questButtonBlurUSS = "pubscreen__quest__button--accepted";
 
-    int currentMercernaryIndex = -1;
+    int currentMercenaryIndex = -1;
 
     Button hireButton;
     void Start()
@@ -31,11 +31,11 @@ public class PubScreen : MenuScreen
         hireButton = m_Root.Q<Button>("HireButton");
 
         hireButton.clicked += Hire;
-        CreateMercernaryList();
+        CreateMercenaryList();
 
-        ShowMercernaryListInfo();
+        ShowMercenaryListInfo();
 
-        questInfoLabel = m_Screen.Q<Label>("Quest_Header_Label");
+        questInfoLabel = m_Screen.Q<Label>("Quest_Info_Label");
         questButtonContainer = m_Screen.Q<VisualElement>("Quest_Button_Container");
         quest = gameManager.questSO;
         SetQuest();
@@ -43,28 +43,28 @@ public class PubScreen : MenuScreen
 
     void Hire()
     {
-        if(currentMercernaryIndex != -1)
+        if(currentMercenaryIndex != -1)
         {
             // if(gameManager.money >= money)
-            Debug.Log(currentMercernaryIndex);
-            //CharacterSO characterSO = new CharacterSO((mercernaryList[currentMercernaryIndex].GetComponent<CharacterStats>()));
+            Debug.Log(currentMercenaryIndex);
+            //CharacterSO characterSO = new CharacterSO((mercenaryList[currentMercenaryIndex].GetComponent<CharacterStats>()));
             CharacterSO characterSO = ScriptableObject.CreateInstance<CharacterSO>();
-            characterSO.SetCharacterSO((mercernaryList[currentMercernaryIndex].GetComponent<CharacterStats>()));
+            characterSO.SetCharacterSO((mercenaryList[currentMercenaryIndex].GetComponent<CharacterStats>()));
             characterSO.characterVisualsPrefab = prefabList[(int)characterSO.characterClass];
             gameManager.GMcharacterList.Add(characterSO);
-            mercernaryList[currentMercernaryIndex] = null;
-            //m_Root.Q<VisualElement>("Mercernary"+currentMercernaryIndex).style.display = DisplayStyle.None;
-            //m_Root.Q<VisualElement>("Mercernary"+currentMercernaryIndex).style.visibility = Visibility.Hidden;
-            mercernaryButtons[currentMercernaryIndex].style.visibility = Visibility.Hidden;
+            mercenaryList[currentMercenaryIndex] = null;
+            //m_Root.Q<VisualElement>("Mercenary"+currentMercenaryIndex).style.display = DisplayStyle.None;
+            //m_Root.Q<VisualElement>("Mercenary"+currentMercenaryIndex).style.visibility = Visibility.Hidden;
+            mercenaryButtons[currentMercenaryIndex].style.visibility = Visibility.Hidden;
         }
     }
 
-#region CreateMercernaryList
-        private void CreateMercernaryList()
+#region CreateMercenaryList
+        private void CreateMercenaryList()
         {
             for(int i=0; i<4; i++)
             {
-                mercernaryList.Add(CreateChracterGO(i));
+                mercenaryList.Add(CreateChracterGO(i));
             }
         }
 
@@ -101,45 +101,50 @@ public class PubScreen : MenuScreen
 #endregion
 
 #region PubScreenUIMange
-        void ShowMercernaryListInfo()
+        void ShowMercenaryListInfo()
         {
             for(int i=0; i<4; i++)
             {
-                mercernaryButtons.Add(m_Root.Q<Button>(mercernayButtonID + i));
-                VisualElement ve = m_Root.Q<VisualElement>("Mercernary" + i);
-                //ve.Q<Label>("MercernaryInfoLabel").text =
+                mercenaryButtons.Add(m_Root.Q<Button>(mercernayButtonID + i));
+                VisualElement ve = m_Root.Q<VisualElement>("Mercenary" + i);
+                //ve.Q<Label>("MercenaryInfoLabel").text =
                 //    $"initHP = {go.GetComponent<CharacterStats>().initHp}";
                 //if (m_Root != null) m_Root = m_Document.rootVisualElement;
-                ve.Q<Label>("MercernaryInfoLabel").text =
-                    $"initHP = {mercernaryList[i].GetComponent<CharacterStats>().initHp}";
-                //ve.Q<Button>("MercernaryButton").text = "BUtton!!";
-                mercernaryButtons[i].RegisterCallback<ClickEvent>(MarkUp);
+                CharacterStats stats = mercenaryList[i].GetComponent<CharacterStats>();
+                ve.Q<VisualElement>("MercenarySpriteContainer").style.backgroundImage = new StyleBackground(stats._data.visual);
+                // later, allocate the gold that needs to hire the mercenary
+                int rnd = Random.Range(500, 1000); // for testing,
+                ve.Q<Label>("MercenaryInfoLabel").text = $"price : {rnd} gold"
+                        + "\n" + $"initHP : {stats.initHp}    class : {stats.characterClass}";
+                        //+ "\n" + ;
+                //ve.Q<Button>("MercenaryButton").text = "BUtton!!";
+                mercenaryButtons[i].RegisterCallback<ClickEvent>(MarkUp);
             }
         }
         
         void MarkUp(ClickEvent cvt)
         {
             Button targetButton = cvt.target as Button;
-            //int pastMercernaryIndex = currentMercernaryIndex;
-            if(currentMercernaryIndex != -1)
+            //int pastMercenaryIndex = currentMercenaryIndex;
+            if(currentMercenaryIndex != -1)
             {
-                mercernaryButtons[currentMercernaryIndex].RemoveFromClassList(mercernaryButtonActiveID);
-                mercernaryButtons[currentMercernaryIndex].AddToClassList(mercernaryButtonDeactiveID);
+                mercenaryButtons[currentMercenaryIndex].RemoveFromClassList(mercenaryButtonActiveID);
+                mercenaryButtons[currentMercenaryIndex].AddToClassList(mercenaryButtonDeactiveID);
             }
-            currentMercernaryIndex = targetButton.name[^1] - '0';
-            if (currentMercernaryIndex == -1 || mercernaryList[currentMercernaryIndex] == null)
+            currentMercenaryIndex = targetButton.name[^1] - '0';
+            if (currentMercenaryIndex == -1 || mercenaryList[currentMercenaryIndex] == null)
             {
                 Debug.LogWarning("No mercernay choosen");
                 return;
             }
 
-            //if(pastMercernaryIndex != -1)
+            //if(pastMercenaryIndex != -1)
             //{
-            //    mercernaryButtons[pastMercernaryIndex].RemoveFromClassList(mercernaryButtonActiveID);
-            //    mercernaryButtons[pastMercernaryIndex].AddToClassList(mercernaryButtonDeactiveID);
+            //    mercenaryButtons[pastMercenaryIndex].RemoveFromClassList(mercenaryButtonActiveID);
+            //    mercenaryButtons[pastMercenaryIndex].AddToClassList(mercenaryButtonDeactiveID);
             //}
-            mercernaryButtons[currentMercernaryIndex].RemoveFromClassList(mercernaryButtonDeactiveID);
-            mercernaryButtons[currentMercernaryIndex].AddToClassList(mercernaryButtonActiveID);
+            mercenaryButtons[currentMercenaryIndex].RemoveFromClassList(mercenaryButtonDeactiveID);
+            mercenaryButtons[currentMercenaryIndex].AddToClassList(mercenaryButtonActiveID);
         }
 #endregion
 
@@ -147,7 +152,7 @@ public class PubScreen : MenuScreen
         void SetQuest()
         {
             /// quest Info
-            questInfoLabel.text = $"Clear the {quest.questName} !!";
+            questInfoLabel.text = $"Clear the {quest.questName} Dungeon!!";
 
             /// quest Button
             questButtonContainer.Clear();
@@ -182,10 +187,17 @@ public class PubScreen : MenuScreen
         void CompleteQuest(ClickEvent cvt)
         {
             Button targetButton = cvt.target as Button;
-            targetButton.AddToClassList(questButtonBlurUSS);
+            targetButton.RemoveFromClassList(questButtonBlurUSS);
+            targetButton.text = "ACCEPT";
             quest.state = questState.NOTACCEPT;
+            Number n = Number.FIRST;
+            n += quest.questNumber;
             quest.questNumber += 1;
+            quest.questName = n.ToString();
             gameManager.gameDataSO.dungeonNumber += 1;
+            questInfoLabel.text = $"Clear the {quest.questName} Dungeon!!";
+            targetButton.UnregisterCallback<ClickEvent>(CompleteQuest);
+            targetButton.RegisterCallback<ClickEvent>(AcceptQuest);
         }
     } 
 }
