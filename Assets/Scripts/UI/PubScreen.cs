@@ -51,6 +51,8 @@ public class PubScreen : MenuScreen
             CharacterSO characterSO = ScriptableObject.CreateInstance<CharacterSO>();
             characterSO.SetCharacterSO((mercenaryList[currentMercenaryIndex].GetComponent<CharacterStats>()));
             characterSO.characterVisualsPrefab = prefabList[(int)characterSO.characterClass];
+            // later, add more visual sprites
+            characterSO.visual = characterSOs[(int)characterSO.characterClass].visual;
             gameManager.GMcharacterList.Add(characterSO);
             mercenaryList[currentMercenaryIndex] = null;
             //m_Root.Q<VisualElement>("Mercenary"+currentMercenaryIndex).style.display = DisplayStyle.None;

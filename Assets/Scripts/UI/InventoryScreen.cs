@@ -13,13 +13,6 @@ public class InventoryScreen : MenuScreen
     List<EquipmentSO> equipmentList;
 
     public CharacterSO curChracterData;
-/*
-    VisualElement m_SlotContainer;
-    VisualElement m_RosterContainer;
-    VisualElement m_Weapon;
-    VisualElement m_Armor;
-*/
-
     VisualElement characterSprite;
     VisualElement rosterContainer;
     VisualElement equipmentContainer;
@@ -31,16 +24,13 @@ public class InventoryScreen : MenuScreen
     VisualElement responseContainer;
     VisualElement atkDamageContainer;
     VisualElement atkDistanceContainer;
+    VisualElement xpGauge;
 
     public List<Button> equipmentButtons = new List<Button>();
     public List<Button> characterbuttons = new List<Button>();
 
     Button weaponButton;
     Button armorButton;
-
-    Label infoLeftLabel;
-    Label infoMiddleLabel;
-    Label statsLabel;
 
     Label characterLevel;
     Label characterXp;
@@ -68,6 +58,9 @@ public class InventoryScreen : MenuScreen
         responseContainer = m_Screen.Q<VisualElement>("ResponseStats");
         atkDamageContainer = m_Screen.Q<VisualElement>("AtkDamageStats");
         atkDistanceContainer = m_Screen.Q<VisualElement>("AtkDistanceStats");
+
+        xpGauge = m_Screen.Q<VisualElement>("XPGauge");
+
 
         characterLevel = m_Screen.Q<Label>("LevelLabel");
         characterName = m_Screen.Q<Label>("CharacterName");
@@ -166,19 +159,20 @@ public class InventoryScreen : MenuScreen
         characterSprite.style.backgroundImage = new StyleBackground(curChracterData.visual);
         characterName.text = curChracterData.characterName;
         characterLevel.text = curChracterData.characterLevel.ToString();
-        // later modify..
-        characterXp.text = curChracterData.xp.ToString();
+
+        xpGauge.style.width = Length.Percent(curChracterData.xp);
+        characterXp.text = $"{curChracterData.xp} / 100";
         
         hpContainer.Q<Label>("Label").text = curChracterData.initHp.ToString();
         defenseContainer.Q<VisualElement>("Gague").style.width = Length.Percent(curChracterData.defense);
         defenseContainer.Q<Label>("Label").text = curChracterData.defense.ToString();
         speedContainer.Q<VisualElement>("Gague").style.width = Length.Percent(curChracterData.speed);
         speedContainer.Q<Label>("Label").text = curChracterData.speed.ToString();
-        responseContainer.Q<VisualElement>("Gague").style.width = Length.Percent(curChracterData.responseSpeed);
+        responseContainer.Q<VisualElement>("Gague").style.width = Length.Percent((1.5f - curChracterData.responseSpeed) * 100);
         responseContainer.Q<Label>("Label").text = curChracterData.responseSpeed.ToString();
         atkDamageContainer.Q<VisualElement>("Gague").style.width = Length.Percent(curChracterData.baseAttackDamage);
         atkDamageContainer.Q<Label>("Label").text = curChracterData.baseAttackDamage.ToString();
-        atkDistanceContainer.Q<VisualElement>("Gague").style.width = Length.Percent(curChracterData.attackDistance);
+        atkDistanceContainer.Q<VisualElement>("Gague").style.width = Length.Percent(curChracterData.attackDistance * 20);
         atkDistanceContainer.Q<Label>("Label").text = curChracterData.attackDistance.ToString();
     }
 
