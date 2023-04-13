@@ -99,10 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00568fec90b7e417fa72d993fcea2896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneCtrlGO: {fileID: 0}
   gameSceneCtrl: {fileID: 0}
-  _stats: {fileID: 0}
-  _data: {fileID: 0}
+  stats: {fileID: 0}
   path: {fileID: 0}
   positions: []
   movePosList: []
@@ -112,14 +110,14 @@ MonoBehaviour:
   isBaseAttackOn: 1
   targetPos: {x: 0, y: 0}
   mid: 0
+  t: 0
   canAct: 1
   forceMoveOn: 0
   eventOn: 0
   enemyList: []
   attackTarget: {fileID: 0}
   l: []
-  currHp: 0
-  _state: 0
+  state: 0
 --- !u!114 &5686581417595261599
 MonoBehaviour:
   m_ObjectHideFlags: 0

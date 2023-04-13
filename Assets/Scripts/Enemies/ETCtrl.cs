@@ -103,6 +103,7 @@ public class ETCtrl : EnemyCtrl
         //_attackTarget.GetComponent<AllyCtrl>().changeHp(-50);
 		foreach (var ally in allyList) {
 			if(Physics2D.IsTouching(skillGOs[0].GetComponent<Collider2D>(), ally.GetComponent<Collider2D>())){
+				Debug.Log(ally.name + " hit first skill");
 				//ally.GetComponent<AllyCtrl>().changeHp(-50); //TakeDamage(50); // takedamage 함수 구현하자
 				gameSceneCtrl.CharacterHpChange(ally, gameObject,-50, this.name);
 			}
@@ -122,7 +123,7 @@ public class ETCtrl : EnemyCtrl
 		foreach(var ally in allyList){
 			ally.GetComponent<AllyCtrl>().eventOn = true;
 		}
-		int _rand = Random.Range(0, allyList.Count-1);
+		int _rand = Random.Range(0, allyList.Count);
 		//Quaternion rot = Quaternion.LookRotation(allyList[_rand].transform.position
 		//										- transform.position);
 		GameObject _randAlly = allyList[_rand];
@@ -138,6 +139,7 @@ public class ETCtrl : EnemyCtrl
 		yield return new WaitForSeconds(5);
 		foreach (var ally in allyList) {
 			if(Physics2D.IsTouching(laser.GetComponent<Collider2D>(), ally.GetComponent<Collider2D>())){
+				Debug.Log(ally.name + " hit second skill");
 				//ally.GetComponent<AllyCtrl>().changeHp(-50); //TakeDamage(50); // takedamage 함수 구현하자
 				gameSceneCtrl.CharacterHpChange(ally, gameObject,-50, this.name);
 			}
@@ -155,7 +157,7 @@ public class ETCtrl : EnemyCtrl
     	// 시전
     	isThirdSkillOn = false;
 		GameObject _circle = skillGOs[2].gameObject;//
-		int rnd = Random.Range(0, 4);
+		int rnd = Random.Range(0, allyListNumber);
 		int _x = Random.Range(-4, 4);
 		int _y = Random.Range(-4, 4);
 		_circle.transform.position = (Vector2)allyList[rnd].transform.position + (new Vector2(_x,_y));
@@ -163,7 +165,7 @@ public class ETCtrl : EnemyCtrl
 		yield return new WaitForSeconds(3);
 		foreach(var ally in allyList) {
 			if(Physics2D.IsTouching(_circle.GetComponent<Collider2D>(), ally.GetComponent<Collider2D>())){
-				//ally.GetComponent<AllyCtrl>().changeHp(-50); //TakeDamage(50);
+				Debug.Log(ally.name + " hit third skill");
 				gameSceneCtrl.CharacterHpChange(ally, gameObject,-50, this.name);
 			}
 		}
@@ -190,23 +192,39 @@ public class ETCtrl : EnemyCtrl
 
 	IEnumerator FourthSkillAttach(GameObject ao)
 	{
-		float t = 0;
+		//float t = 0;
+		/*
 		while(t < 10)
 		{
 			ao.transform.position = _attackTarget.transform.position;
 			yield return new WaitForSeconds(0.1f);
 			t += 0.1f;
 		}
+		*/
+		GameObject go = _attackTarget;
+		go.GetComponent<AllyCtrl>().canAct = false;
+		yield return new WaitForSeconds(5);
+		go.GetComponent<AllyCtrl>().canAct = true;
 		Collider2D[] _collsFourth = Physics2D.OverlapCircleAll(ao.transform.position,1.5f, 1<<6);
 			//int num = Physics2D.GetContacts(_areaObject, allys);//collider2d 로?
 		int num = _collsFourth.Length;
 		if (num != 0){
 			int _damage = 100 / num ;
+			/*
 			foreach(var _coll in _collsFourth){
+				Debug.Log(_coll.name + " hit fourth skill");
 				//_coll.gameObject.GetComponent<AllyCtrl>().changeHp(-_damage); //TakeDamage(_damage);
-			}
+				gameSceneCtrl.CharacterHpChange(_coll.gameObject, gameObject, -_damage, this.name);
+			*/
+			foreach(var ally in allyList) {
+			if(Physics2D.IsTouching(ao.GetComponent<Collider2D>(), ally.GetComponent<Collider2D>())){
+				Debug.Log(ally.name + " hit fourth skill");
+				gameSceneCtrl.CharacterHpChange(ally, gameObject, -_damage, this.name);
+			
 		}
 		ao.SetActive(false);
+	}
+}
 	}
 }
 }

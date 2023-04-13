@@ -405,14 +405,14 @@ MonoBehaviour:
   m_Document: {fileID: 610311802}
   gameManager: {fileID: 0}
   prefabList:
-  - {fileID: 6487494145041874554, guid: b93b9185b3ed54481974e9e15f0376eb, type: 3}
+  - {fileID: 6487494145041874554, guid: e992a064d533c40e7ab53fd99bebb069, type: 3}
   - {fileID: 6487494145041874554, guid: 366073990118c47f0ad91bba78dbae24, type: 3}
   - {fileID: 6487494145041874554, guid: 0d2cf184bd3d9477f92c1ac9e852fb59, type: 3}
   characterSOs:
   - {fileID: 11400000, guid: 2dea2d543c0cd4102bd3ded4036c1c2c, type: 2}
   - {fileID: 11400000, guid: 9631bf2549ca24ff0b47c9a2a836014e, type: 2}
   - {fileID: 11400000, guid: 2f67b1c1baa08469689c5482aeff711f, type: 2}
-  mercernaryList: []
+  mercenaryList: []
 --- !u!4 &876415123
 Transform:
   m_ObjectHideFlags: 0

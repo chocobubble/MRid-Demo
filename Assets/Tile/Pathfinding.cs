@@ -52,7 +52,7 @@ public class Pathfinding : MonoBehaviour
       for (int y = 0; y < yLength; y++)
       {
         pathNodes[x, y] = new PathNode(x, y);
-        RaycastHit2D hit2D = Physics2D.Raycast(new Vector2(x, y), Vector2.zero, 0, 1<<9);
+        RaycastHit2D hit2D = Physics2D.Raycast(new Vector2(x, y), Vector2.zero, ((1<<9)));
         if(hit2D.collider != null)
         {
           pathNodes[x,y].isObstacle = true;
@@ -64,7 +64,7 @@ public class Pathfinding : MonoBehaviour
 
   //public List<PathNode> FindPath(int startX, int startY, int endX, int endY)
 
-  // It's for find escape pathway.
+  // It's for finding escape pathway.
   public List<Vector2> FindPath(int startX, int startY, int endX, int endY)
   {
     PathNode startNode = pathNodes[startX, startY];
@@ -175,8 +175,9 @@ public class Pathfinding : MonoBehaviour
       {
         // we finished searching ours path
 
-        RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(currentNode.xPos, currentNode.yPos), Vector2.zero, 0, 1<<6);
+        RaycastHit2D hit2 = Physics2D.Raycast(currentNode.nodePos, Vector2.zero, 0.01f, ((1<<6)));
         if (hit2.collider == null) return RetracePath(startNode, currentNode);
+        else Debug.Log(hit2.collider.name + " hit");
       }
 
       List<PathNode> neighbourNodes = new List<PathNode>();
