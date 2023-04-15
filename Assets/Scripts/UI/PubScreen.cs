@@ -14,7 +14,7 @@ public class PubScreen : MenuScreen
     QuestSO quest;
     Label questInfoLabel;
     VisualElement questButtonContainer;
-    //public List<CharacterSO> mercenaryList = new List<CharacterSO>();
+
     string mercernayButtonID = "MercenaryButton";
     string mercenaryButtonActiveID = "mercenary__container__active";
     string mercenaryButtonDeactiveID = "mercenary__container";
@@ -47,7 +47,6 @@ public class PubScreen : MenuScreen
         {
             // if(gameManager.money >= money)
             Debug.Log(currentMercenaryIndex);
-            //CharacterSO characterSO = new CharacterSO((mercenaryList[currentMercenaryIndex].GetComponent<CharacterStats>()));
             CharacterSO characterSO = ScriptableObject.CreateInstance<CharacterSO>();
             characterSO.SetCharacterSO((mercenaryList[currentMercenaryIndex].GetComponent<CharacterStats>()));
             characterSO.characterVisualsPrefab = prefabList[(int)characterSO.characterClass];
@@ -55,8 +54,6 @@ public class PubScreen : MenuScreen
             characterSO.visual = characterSOs[(int)characterSO.characterClass].visual;
             gameManager.GMcharacterList.Add(characterSO);
             mercenaryList[currentMercenaryIndex] = null;
-            //m_Root.Q<VisualElement>("Mercenary"+currentMercenaryIndex).style.display = DisplayStyle.None;
-            //m_Root.Q<VisualElement>("Mercenary"+currentMercenaryIndex).style.visibility = Visibility.Hidden;
             mercenaryButtons[currentMercenaryIndex].style.visibility = Visibility.Hidden;
         }
     }
@@ -109,17 +106,12 @@ public class PubScreen : MenuScreen
             {
                 mercenaryButtons.Add(m_Root.Q<Button>(mercernayButtonID + i));
                 VisualElement ve = m_Root.Q<VisualElement>("Mercenary" + i);
-                //ve.Q<Label>("MercenaryInfoLabel").text =
-                //    $"initHP = {go.GetComponent<CharacterStats>().initHp}";
-                //if (m_Root != null) m_Root = m_Document.rootVisualElement;
                 CharacterStats stats = mercenaryList[i].GetComponent<CharacterStats>();
                 ve.Q<VisualElement>("MercenarySpriteContainer").style.backgroundImage = new StyleBackground(stats._data.visual);
                 // later, allocate the gold that needs to hire the mercenary
                 int rnd = Random.Range(500, 1000); // for testing,
                 ve.Q<Label>("MercenaryInfoLabel").text = $"price : {rnd} gold"
                         + "\n" + $"initHP : {stats.initHp}    class : {stats.characterClass}";
-                        //+ "\n" + ;
-                //ve.Q<Button>("MercenaryButton").text = "BUtton!!";
                 mercenaryButtons[i].RegisterCallback<ClickEvent>(MarkUp);
             }
         }
@@ -127,7 +119,6 @@ public class PubScreen : MenuScreen
         void MarkUp(ClickEvent cvt)
         {
             Button targetButton = cvt.target as Button;
-            //int pastMercenaryIndex = currentMercenaryIndex;
             if(currentMercenaryIndex != -1)
             {
                 mercenaryButtons[currentMercenaryIndex].RemoveFromClassList(mercenaryButtonActiveID);
@@ -139,12 +130,6 @@ public class PubScreen : MenuScreen
                 Debug.LogWarning("No mercernay choosen");
                 return;
             }
-
-            //if(pastMercenaryIndex != -1)
-            //{
-            //    mercenaryButtons[pastMercenaryIndex].RemoveFromClassList(mercenaryButtonActiveID);
-            //    mercenaryButtons[pastMercenaryIndex].AddToClassList(mercenaryButtonDeactiveID);
-            //}
             mercenaryButtons[currentMercenaryIndex].RemoveFromClassList(mercenaryButtonDeactiveID);
             mercenaryButtons[currentMercenaryIndex].AddToClassList(mercenaryButtonActiveID);
         }

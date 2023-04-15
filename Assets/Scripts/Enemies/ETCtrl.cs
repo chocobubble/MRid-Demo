@@ -6,17 +6,14 @@ namespace MRidDemo
 {
 public class ETCtrl : EnemyCtrl
 {
-    //public List<GameObject> skillGOs;
 	[SerializeField]
 	GameObject[] skillGOs;
     public bool isFirstSkillOn = false;
 	public int firstSkillCoolTime = 10;
     public bool isSecondSkillOn = false;
 	public int secondSkillCoolTime = 20;
-	//public GameObject secondSkillArea;
     public bool isThirdSkillOn = false;
 	public int thirdSkillCoolTime = 30;
-	//public GameObject thirdSkillArea;
     public bool isFourthSkillOn = false;
 	public int fourthSkillCoolTime = 40;
 
@@ -24,22 +21,13 @@ public class ETCtrl : EnemyCtrl
     {
         base.Awake();
 
-/*
-        // make skill GOs and add to list..
-		for(int i=0; i<5; i++)
-		{
-			skillGOs.Add(Instantiate(gmr));
-			skillGOs[i].SetActive(false);
-		}
-*/
-		// set skill gameobjects to this.
-		//skillGOs = GameObject.Find("AOESkills").GetComponentsInChildren<Transform>();
 		skillGOs = GameObject.FindGameObjectsWithTag("ENEMYSKILL");
 		foreach(GameObject go in skillGOs)
 		{
 			go.SetActive(false);
 		}
 	}
+
     protected override IEnumerator SetStartCool()
     {
 	    yield return new WaitForSeconds(5);
@@ -78,32 +66,23 @@ public class ETCtrl : EnemyCtrl
 		//int rand = Random.Range(1,2);
         int rand = Random.Range(0,allyListNumber);
 		StartCoroutine(FirstSkillRange(rand));
-    	yield return new WaitForSeconds(30);
+    	yield return new WaitForSeconds(5);
     	isFirstSkillOn = true;
     }  // if t여야 스킬 함수 호출하게..해야할듯
 	
 	IEnumerator FirstSkillRange(int r){ // 장판 생성
         Debug.Log("FirstSkill_Enemy");
-		//GameObject _gob = GameObject.Find($"FirstSkillArea_{r}");
-        //에디터에서 지정
 
         skillGOs[0].gameObject.SetActive(true);
         skillGOs[0].transform.position = _attackTarget.transform.position;
 		foreach(var ally in allyList){
+			//StopCoroutine(ally.GetComponent<AllyCtrl>().Judge()); 83f9829af5c0c14e7bd7930d0c47c8e333bc38fa
 			ally.GetComponent<AllyCtrl>().eventOn = true;
 		}
-		yield return new WaitForSeconds(10);
-		/*
-		foreach(var ally in allys){
-			ally.hp -= 50;
-		}
-        */	
+		yield return new WaitForSeconds(firstSkillCoolTime - 5);
 
-        //ally.hp -= 50;
-        //_attackTarget.GetComponent<AllyCtrl>().changeHp(-50);
 		foreach (var ally in allyList) {
 			if(Physics2D.IsTouching(skillGOs[0].GetComponent<Collider2D>(), ally.GetComponent<Collider2D>())){
-				Debug.Log(ally.name + " hit first skill");
 				//ally.GetComponent<AllyCtrl>().changeHp(-50); //TakeDamage(50); // takedamage 함수 구현하자
 				gameSceneCtrl.CharacterHpChange(ally, gameObject,-50, this.name);
 			}
@@ -121,6 +100,7 @@ public class ETCtrl : EnemyCtrl
 			// 참조형 변수로 혹은 포인터로 나중에 바꾸자
 			// 나중에 allys로..
 		foreach(var ally in allyList){
+			//StopCoroutine(ally.GetComponent<AllyCtrl>().Judge());
 			ally.GetComponent<AllyCtrl>().eventOn = true;
 		}
 		int _rand = Random.Range(0, allyList.Count);
@@ -145,19 +125,20 @@ public class ETCtrl : EnemyCtrl
 			}
 		}
 		laser.SetActive(false);
-    	yield return new WaitForSeconds(30);
+    	yield return new WaitForSeconds(secondSkillCoolTime - 5);
     	isSecondSkillOn = true;
     }  // if t여야 스킬 함수 호출하게..해야할듯
 
     IEnumerator ThirdSkill(){ // 랜덤 범위 공격
 		Debug.Log("Third_Skill_Enemy");
 		foreach(var ally in allyList){
+			//StopCoroutine(ally.GetComponent<AllyCtrl>().Judge());
 			ally.GetComponent<AllyCtrl>().eventOn = true;
 		}
     	// 시전
     	isThirdSkillOn = false;
 		GameObject _circle = skillGOs[2].gameObject;//
-		int rnd = Random.Range(0, allyListNumber);
+		int rnd = Random.Range(0, 4);
 		int _x = Random.Range(-4, 4);
 		int _y = Random.Range(-4, 4);
 		_circle.transform.position = (Vector2)allyList[rnd].transform.position + (new Vector2(_x,_y));
@@ -170,13 +151,14 @@ public class ETCtrl : EnemyCtrl
 			}
 		}
 		_circle.SetActive(false);
-    	yield return new WaitForSeconds(60);
+    	yield return new WaitForSeconds(thirdSkillCoolTime - 3);
     	isThirdSkillOn = true;
     }  // if t여야 스킬 함수 호출하게..해야할듯
 
     IEnumerator FourthSkill(){ // 타겟 대상 범위 분산데미지공격
     	Debug.Log("Fourth_Skill_Enemy");
 		foreach(var ally in allyList){
+			//StopCoroutine(ally.GetComponent<AllyCtrl>().Judge());
 			ally.GetComponent<AllyCtrl>().eventOn = true;
 		}
 		// 시전
@@ -186,7 +168,7 @@ public class ETCtrl : EnemyCtrl
 		// _attackTarget에 달 방법을 찾아 보자.
 		StartCoroutine(FourthSkillAttach(_areaObject));
 
-    	yield return new WaitForSeconds(60);
+    	yield return new WaitForSeconds(fourthSkillCoolTime);
     	isFourthSkillOn = true;
     }  // if t여야 스킬 함수 호출하게..해야할듯
 

@@ -11,11 +11,6 @@ public class HomeScreenControl : MonoBehaviour
     Button m_ExitButton;
     Button m_SettingsButton;
 
-    [SerializeField]
-    // Drag & Drop in the inspector
-    //private VisualTreeAsset _settingsButtonTemplate;
-    // Create based on the file above
-    //private VisualElement _settingsButtons;
     private VisualElement _buttonsWrapper;
 
     protected UIDocument m_document;
@@ -23,18 +18,6 @@ public class HomeScreenControl : MonoBehaviour
     protected VisualElement m_root;
     
     GameObject GO;
-
-/*
-    void Awake()
-    {
-        _buttonsWrapper = m_root.Q<VisualElement>("Buttons");
-    
-        //_settingsButtons = _settingsButtonTemplate.CloneTree();
-        //var backButton = _settingsButtons.Q<Button>("BackButton");
-        //backButton.clicked += BackButtonOnClicked;
-        
-    }
-*/
 
     void Start()
     {
@@ -48,7 +31,6 @@ public class HomeScreenControl : MonoBehaviour
 
         m_StartButton = m_root.Q<Button>("StartButton");
         m_StartButton.clicked += ShowMainScene;
-        //m_MainScreenButton.RegisterCallback<ClickEvent>(ShowMainScene);
 
         m_ExitButton = m_root.Q<Button>("ExitButton");
         m_ExitButton.clicked += ExitMainScene;
@@ -56,16 +38,8 @@ public class HomeScreenControl : MonoBehaviour
 
     private void ShowMainScene()
     {
-        //Debug.Log("ShowMainScreen");
-
         SceneManager.LoadScene("MainScene");
     }
-    private void ShowMainScene(ClickEvent evt)
-    {
-        Debug.Log("Load Scene");
-        SceneManager.LoadScene("Game");
-    }
-
     private void ExitMainScene()
     {
         Application.Quit();
@@ -75,13 +49,5 @@ public class HomeScreenControl : MonoBehaviour
     {
         _buttonsWrapper.Clear();
         _buttonsWrapper.Add(m_SettingsButton);
-    }
-
-    private void BackButtonOnClicked()
-    {
-        _buttonsWrapper.Clear();
-        _buttonsWrapper.Add(m_StartButton);
-        _buttonsWrapper.Add(m_SettingsButton);
-        _buttonsWrapper.Add(m_ExitButton);
     }
 }

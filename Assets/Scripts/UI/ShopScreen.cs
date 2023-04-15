@@ -11,7 +11,7 @@ public class ShopScreen : MenuScreen
     List<Button> sellingItemButtons = new List<Button>();
     List<EquipmentSO> defaultItems = new List<EquipmentSO>();
     public List<EquipmentSO> sellingItems = new List<EquipmentSO>();
-    //List<EquipData> sellingItems = new List<EquipData>();
+
     Label itemInfo;
     Button purchaseButton;
     string sellingItemID = "SellingItem";
@@ -43,7 +43,6 @@ public class ShopScreen : MenuScreen
 
         // It works!!
         gameManager.GMEquipmentList.Add(sellingItems[currentItemIndex]);
-        //StartCoroutine(WaitOneSeconds());
         sellingItems[currentItemIndex] = null;
         m_Root.Q<Button>(sellingItemID + currentItemIndex).style.visibility = Visibility.Hidden;
     }
@@ -88,31 +87,6 @@ public class ShopScreen : MenuScreen
         _equip.points = _default.points;
         _equip.sprite = _default.sprite;
     }
-/*
-    public void CreateSellingItems()
-    {          
-        for(int i=0; i<8; i++)
-        {
-            sellingItemButtons.Add(m_Root.Q<Button>(sellingItemID + i));
-            EquipmentSO equip = ScriptableObject.CreateInstance<EquipmentSO>();
-            int rnd = Random.Range(0,6);
-            SetEquipmentData(equip, defaultItems[rnd]);
-            sellingItems.Add(equip);
-            sellingItemButtons[i].style.backgroundImage = new StyleBackground(equip.sprite);
-            sellingItemButtons[i].RegisterCallback<ClickEvent, EquipmentSO>(ShowEquipmentInfo, equip);
-        }
-
-    }
-
-    void SetEquipmentData(EquipmentSO _equip, EquipmentSO _default)
-    {
-        _equip.equipmentName = _default.equipmentName;
-        _equip.equipmentType = _default.equipmentType;
-        _equip.rarity = _default.rarity;
-        _equip.points = _default.points;
-        _equip.sprite = _default.sprite;
-    }
-*/
 #endregion
 
     void ShowEquipmentInfo(ClickEvent cvt)
@@ -133,16 +107,9 @@ public class ShopScreen : MenuScreen
         }
         if(sellingItems[currentItemIndex] == null) return;
         itemInfo.text = $"Name : {sellingItems[currentItemIndex].equipmentName}" + '\n' 
-            + $"Type : {sellingItems[currentItemIndex].equipmentType}" + '\n'
-            + $"Points : {sellingItems[currentItemIndex].points}" + '\n';
-        /*
-        foreach (Button b in sellingItemButtons)
-        {
-            if (b.ClassListContains(sellingItemActiveID))
-            {
-            }
-        }
-        */
+                    + $"Type : {sellingItems[currentItemIndex].equipmentType}" + '\n'
+                    + $"Points : {sellingItems[currentItemIndex].points}" + '\n';
+
         if(targetButton.ClassListContains(sellingItemDeactiveID))
         {
             targetButton.RemoveFromClassList(sellingItemDeactiveID);
