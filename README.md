@@ -3,4 +3,3 @@
 
 ## Codes
 * Codes are in Assets/Scripts
-* Codes related to UI are in Assets/Scripts/UI
