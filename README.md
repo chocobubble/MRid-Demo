@@ -67,13 +67,13 @@ World of Warcraft와 Football Manager에서 아이디어를 가져왔습니다. 
 - start 버튼을 누르면 Prepare Screen UI가 팝업됩니다.
 - 게임 진행도에 따라 표시되는 던전의 종류와 어려움 정도가 다릅니다. LevelSO scriptable object에 의해 결정됩니다.
  
-    [<img width="500" alt="dungeon" src="./Images/dungeon.png">]
+    <img width="500" alt="dungeon" src="https://github.com/chocobubble/Test/assets/100405650/84fe6206-6136-4c90-83fe-732f9cf59ef4">
 
 ### Prepare Screen
 
 - dungeon screen 에서 start 버튼을 누르면 이 screen이 팝업되어 나타납니다.
 - 보유하고 있는 캐릭터 중 원하는 멤버를 골라 전투에 참여시킵니다.  
-    [<img width="500" alt="prepare" src="./Images/prepare.png">]
+    <img width="500" alt="prepare" src="https://github.com/chocobubble/Test/assets/100405650/56c59626-d77a-4f29-863b-f03f4dc901b9">
 
 ### Shop Screen
 
@@ -81,7 +81,7 @@ World of Warcraft와 Football Manager에서 아이디어를 가져왔습니다. 
 - 무기와 갑옷을 베이스로, 3종류의 레어도 모두 랜덤으로 결정되어 shop에 나타납니다.
 - 구매한 장비는 GameManager에서 List로 관리합니다.
 
-   [<img width="500" alt="shop" src="./Images/shop.png">]
+   <img width="500" alt="shop" src="https://github.com/chocobubble/Test/assets/100405650/f6cbd3e7-d72f-4dcc-9fbe-cf3da1f6b43d">
 
 ### Pub Screen
 
@@ -89,14 +89,14 @@ World of Warcraft와 Football Manager에서 아이디어를 가져왔습니다. 
 - 고용한 용병들은 GameManager 에서 List로 관리합니다.
 - 퀘스트 클리어에 따라 시도할 수 있는 던전 종류가 늘어납니다.
 
-   [<img width="500" alt="pub" src="./Images/pub.png">]
+   <img width="500" alt="pub" src="https://github.com/chocobubble/Test/assets/100405650/a7587d49-3edb-45d4-b4de-457f92671f38">
 
 ### Inventory Screen
 
 - 보유하고 있는 장비, 캐릭터 들과 캐릭터들의 스탯을 볼 수 있습니다.
 - 캐릭터들의 장비 전환이 가능합니다.
 
-   [<img width="500" alt="inventory" src="./Images/inventory.png">]
+   <img width="500" alt="inventory" src="https://github.com/chocobubble/Test/assets/100405650/82fb4a62-1804-4284-9a28-bdb2b99dd139">
 
 ### Game Scene
 
@@ -104,4 +104,4 @@ World of Warcraft와 Football Manager에서 아이디어를 가져왔습니다. 
 - 아군과 적의 hp를 큰 막대바로 보여주고, 가한 데미지를 수치로, 스킬 시전시 아래의 작은 막대바가 차오릅니다.
 - 아군 캐릭터들은 적의 범위 공격 스킬이 자신의 바닥 아래에 깔리면 범위에서 벗어나는 위치를 찾고 그 위치로 이동합니다.
 - 공격가능한 범위에서 벗어나면 공격할 수 있는 거리 까지 이동하여 공격합니다.  
-   [<img width="500" alt="game" src="./Images/battle.png">]
+   <img width="500" alt="game" src="https://github.com/chocobubble/Test/assets/100405650/be8d0ad1-c594-4bcf-b396-6b35cce2a100">
