@@ -36,7 +36,6 @@ public class Pathfinding : MonoBehaviour
 {
   public int xLength;
   public int yLength;
-  //GridMap gridMap;
   PathNode[,] pathNodes;
   private void Start()
   {
@@ -62,8 +61,6 @@ public class Pathfinding : MonoBehaviour
     }
   }
 
-  //public List<PathNode> FindPath(int startX, int startY, int endX, int endY)
-
   // It's for find escape pathway.
   public List<Vector2> FindPath(int startX, int startY, int endX, int endY)
   {
@@ -73,7 +70,6 @@ public class Pathfinding : MonoBehaviour
     List<PathNode> openList = new List<PathNode>();
     List<PathNode> closedList = new List<PathNode>();
 
-    //var priorityQueue = new PriorityQueue<TElement,TPriority>();
     openList.Add(startNode);
 
     while (openList.Count > 0)
@@ -98,7 +94,7 @@ public class Pathfinding : MonoBehaviour
 
       if (currentNode == endNode)
       {
-        // we finished searching ours path
+        // finish searching path
         return RetracePath(startNode, endNode);
       }
 
@@ -108,7 +104,6 @@ public class Pathfinding : MonoBehaviour
         for (int y = -1; y < 2; y++)
         {
           if (x == 0 && y == 0)  continue;
-         // if(x < 0 || x >= xLength || y < 0 || y >= yLength) continue;
           if(currentNode.xPos + x < 0 || currentNode.xPos + x >= xLength || currentNode.yPos + y < 0 || currentNode.yPos + y >= yLength) continue;
           neighbourNodes.Add(pathNodes[currentNode.xPos + x, currentNode.yPos + y]);
         }
@@ -147,7 +142,6 @@ public class Pathfinding : MonoBehaviour
     List<PathNode> openList = new List<PathNode>();
     List<PathNode> closedList = new List<PathNode>();
 
-    //var priorityQueue = new PriorityQueue<TElement,TPriority>();
     openList.Add(startNode);
 
     while (openList.Count > 0)
@@ -173,8 +167,6 @@ public class Pathfinding : MonoBehaviour
       // this is diffrence with above FindPath method
       if (currentNode.hValue < distance)
       {
-        // we finished searching ours path
-
         RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(currentNode.xPos, currentNode.yPos), Vector2.zero, 0, 1<<6);
         if (hit2.collider == null) return RetracePath(startNode, currentNode);
       }
@@ -185,7 +177,6 @@ public class Pathfinding : MonoBehaviour
         for (int y = -1; y < 2; y++)
         {
           if (x == 0 && y == 0)  continue;
-         // if(x < 0 || x >= xLength || y < 0 || y >= yLength) continue;
           if(currentNode.xPos + x < 0 || currentNode.xPos + x >= xLength || currentNode.yPos + y < 0 || currentNode.yPos + y >= yLength) continue;
           neighbourNodes.Add(pathNodes[currentNode.xPos + x, currentNode.yPos + y]);
         }
@@ -215,23 +206,6 @@ public class Pathfinding : MonoBehaviour
     return null;
   }
 
-/*
-  private List<PathNode> RetracePath(PathNode startNode, PathNode endNode)
-  {
-      List<PathNode> path = new List<PathNode>();
-
-      PathNode currentNode = endNode;     
-
-      while (currentNode != startNode)
-      {
-        path.Add(currentNode);
-        currentNode = currentNode.parentNode;
-      }
-      path.Reverse();
-
-      return path;
-  }
-  */
   private List<Vector2> RetracePath(PathNode startNode, PathNode endNode)
   {
       List<Vector2> path = new List<Vector2>();
@@ -250,14 +224,6 @@ public class Pathfinding : MonoBehaviour
 
   private int CalculateDistance(PathNode current, PathNode target)
   {
-    /*
-    int distX = Mathf.Abs(current.xPos - target.xPos);
-    int distY = Mathf.Abs(current.yPos - target.yPos);
-
-    if (distX > distY) { return 14 * distY + 10 * (distX - distY); }
-
-    return 14 * distX + 10 * (distY - distX);
-    */
     return (int)Vector2.Distance(current.nodePos, target.nodePos);
   }
 }
